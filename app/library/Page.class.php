@@ -80,31 +80,9 @@
 		* Fungsi untuk set menu sidebar dinamis
 		*/
 		public function setMenuSidebar(){
-			$level = isset($_SESSION['sess_level']) ? $_SESSION['sess_level'] : false;
-
-			// cek jenis user
-			if($level){
-				switch (strtolower($level)) {
-					//
-					case '':
-						ob_start();
-						require_once ROOT.DS.'app'.DS.'views'.DS.'layout'.DS.'sidebar'.DS.'menu_sidebar.php';
-						$this->menuSidebar = ob_get_clean();
-						break;
-
-					// 
-					default:
-						ob_start();
-						require_once ROOT.DS.'app'.DS.'views'.DS.'layout'.DS.'sidebar'.DS.'menu_sidebar.php';
-						$this->menuSidebar = ob_get_clean();
-						break;
-				}
-			}
-			else {
-				ob_start();
-				require_once ROOT.DS.'app'.DS.'views'.DS.'layout'.DS.'sidebar'.DS.'menu_sidebar.php';
-				$this->menuSidebar = ob_get_clean();
-			}
+			ob_start();
+			require_once ROOT.DS.'app'.DS.'views'.DS.'layout'.DS.'sidebar'.DS.'menu_sidebar.php';
+			$this->menuSidebar = ob_get_clean();
 		}
 
 		/**

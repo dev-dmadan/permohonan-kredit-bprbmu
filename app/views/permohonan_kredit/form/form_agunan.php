@@ -10,8 +10,8 @@
 		<label class="radio-inline"><input type="radio" name="jenis" value="Tanah">Tanah</label>
 		<label class="radio-inline"><input type="radio" name="jenis" value="Deposito">Deposito</label>
 		<label class="radio-inline"><input type="radio" name="jenis" value="Jamsostek">Jamsostek</label>
+		<span class="help-block small pesan pesan-jenis"></span>
 	</div>
-	<span class="help-block small pesan pesan-jenis"></span>
 </div>
 
 <!-- Tipe Kendaraan -->
@@ -19,8 +19,8 @@
 	<label class="control-label col-sm-2" for="tipe_kendaraan">Tipe Kendaraan: </label>
 	<div class="col-sm-10">
 		<input type="text" id="tipe_kendaraan" class="form-control field" placeholder="Masukkan Tipe Kendaraan">
+		<span class="help-block small pesan pesan-tipe_kendaraan"></span>
 	</div>
-	<span class="help-block small pesan pesan-tipe_kendaraan"></span>
 </div>
 
 <!-- Warna - Tahun -->
@@ -31,8 +31,8 @@
 			<label class="control-label col-sm-3" for="warna">Warna: </label>
 			<div class="col-sm-9">
 				<input type="text" id="warna" class="form-control field" placeholder="Masukkan Warna Kendaraan">
+				<span class="help-block small pesan pesan-warna"></span>
 			</div>
-			<span class="help-block small pesan pesan-warna"></span>
 		</div>
 	</div>
 
@@ -42,8 +42,8 @@
 			<label class="control-label col-sm-4" for="tahun">Tahun: </label>
 			<div class="col-sm-8">
 				<input type="text" id="tahun" class="form-control field" placeholder="Masukkan Tahun Kendaraan">
+				<span class="help-block small pesan pesan-tahun"></span>
 			</div>
-			<span class="help-block small pesan pesan-tahun"></span>
 		</div>
 	</div>
 </div>
@@ -53,8 +53,8 @@
 	<label class="control-label col-sm-2" for="no_bpkb">No. BPKB: </label>
 	<div class="col-sm-10">
 		<input type="text" id="no_bpkb" class="form-control field" placeholder="Masukkan No. BPKB">
+		<span class="help-block small pesan pesan-no_bpkb"></span>
 	</div>
-	<span class="help-block small pesan pesan-no_bpkb"></span>
 </div>
 
 <!-- Atas Nama -->
@@ -64,8 +64,8 @@
 		<label class="radio-inline"><input type="radio" name="atas_nama" value="Sendiri">Sendiri</label>
 		<label class="radio-inline"><input type="radio" name="atas_nama" value="Keluarga">Keluarga</label>
 		<label class="radio-inline"><input type="radio" name="atas_nama" value="Orang Lain">Orang Lain</label>
+		<span class="help-block small pesan pesan-atas_nama"></span>
 	</div>
-	<span class="help-block small pesan pesan-atas_nama"></span>
 </div>
 
 <!-- Status -->
@@ -74,8 +74,8 @@
 	<div class="col-sm-10">
 		<label class="radio-inline"><input type="radio" name="status_agunan" value="SHM">SHM</label>
 		<label class="radio-inline"><input type="radio" name="status_agunan" value="SHGB">SHGB</label>
+		<span class="help-block small pesan pesan-status_agunan"></span>
 	</div>
-	<span class="help-block small pesan pesan-status_agunan"></span>
 </div>
 
 <!-- IMB - Ada -->
@@ -87,14 +87,14 @@
 				<label class="radio-inline"><input type="radio" name="imb" value="Ada">Ada</label>
 				<label class="radio-inline"><input type="radio" name="imb" value="Tidak Ada">Tidak Ada</label>
 			</div>
-			<span class="help-block small pesan pesan-imb"></span>
 		</div>
 	</div>
 	<div class="col-md-8 col-xs-12">
 		<div class="form-group">
 			<!-- <label class="control-label col-sm-2" for="ada">No. BPKB: </label> -->
 			<div class="col-sm-12">
-				<input type="text" id="ada" class="form-control field" placeholder="">
+				<input type="text" id="ada" class="form-control field" placeholder="Masukkan IMB">
+				<span class="help-block small pesan pesan-imb"></span>
 			</div>
 		</div>
 	</div>
@@ -105,6 +105,6 @@
 	<label class="control-label col-sm-2" for="alamat_agunan">Alamat Jaminan: </label>
 	<div class="col-sm-10">
 		<textarea id="alamat_agunan" class="form-control field" placeholder="Masukkan Alamat Jaminan Agunan"></textarea>
+		<span class="help-block small pesan pesan-alamat_agunan"></span>
 	</div>
-	<span class="help-block small pesan pesan-alamat_agunan"></span>
 </div>

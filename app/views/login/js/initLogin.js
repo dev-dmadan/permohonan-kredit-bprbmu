@@ -1,31 +1,8 @@
 $(document).ready(function() {
-	// init awal
-	$('.form-lupa-password').fadeOut();
-
-	$('#lupaPassword').on('click', function() {
-		resetForm();
-		$('.form-login').slideUp();
-		$('.form-lupa-password').fadeIn();
-	});
-
-	$('#back_login').on('click', function() {
-		resetForm();
-		$('.form-lupa-password').slideUp();
-		$('.form-login').slideDown();
-	});
-
 	// submit login
 	$('#form_login').submit(function(e) {
 		e.preventDefault();
 		submit_login();
-
-		return false;
-	});
-
-	// submit lupa password
-	$('#form_lupa_password').submit(function(e) {
-		e.preventDefault();
-		submit_lupaPassword();
 
 		return false;
 	});
@@ -60,18 +37,19 @@ function submit_login() {
 			$('#submit_login').prop('disabled', true);
 			$('#submit_login').prepend('<i class="fa fa-spin fa-refresh"></i> ');
 		},
-		success: function(output){
-			console.log(output);
-			if(output.status) document.location=BASE_URL;
+		success: function(response){
+			console.log('Response submit_login: ', response);
+			if(response.success) document.location=BASE_URL+'permohonan-kredit-admin/';
 			else{
 				$('#submit_login').prop('disabled', false);
 				$('#submit_login').html($('#submit_login').text());
 				// set error
-				setError(output.error);
+				setError(response.error);
+				setNotif(response.notif);
 			}
 		},
 		error: function (jqXHR, textStatus, errorThrown) { // error handling
-			console.log(jqXHR, textStatus, errorThrown);
+			console.log('Response Error submit_login: ', jqXHR, textStatus, errorThrown);
 			swal("Pesan Gagal", "Terjadi Kesalahan Teknis, Silahkan Coba Kembali", "error");
             $('#submit_login').prop('disabled', false);
 			$('#submit_login').html($('#submit_login').text());
@@ -80,21 +58,11 @@ function submit_login() {
 }
 
 /**
-*
-*/
-function submit_lupaPassword() {
-
-}
-
-/**
-*
-*/
+ * 
+ */
 function resetForm() {
 	// form login
 	$('#form_login').trigger('reset');
-
-	// form lupa password
-	$('#form_lupa_password').trigger('reset');
 
 	// hapus semua feedback
 	$('.pesan').text('');
@@ -104,19 +72,18 @@ function resetForm() {
 }
 
 /**
-*
-*/
+ * 
+ * @param {object} error 
+ */
 function setError(error) {
-	$.each(error, function(index, item) {
-		console.log(index);
-
-		if(!jQuery.isEmptyObject(index)) {
+	$.each(error, function(index, item){
+		if(item != ""){
 			$('.field-'+index).removeClass('has-success').addClass('has-error');
 			$('.pesan-'+index).text(item);
 		}
-		else {
+		else{
 			$('.field-'+index).removeClass('has-error').addClass('has-success');
-			$('.pesan-'+index).text('');	
+			$('.pesan-'+index).text('');
 		}
 	});
 }

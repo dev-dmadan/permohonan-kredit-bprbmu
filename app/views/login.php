@@ -5,7 +5,7 @@
 	<head>
 	  	<meta charset="utf-8">
 	  	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	  	<title>AdminLTE 2 | Log in</title>
+	  	<title>BPRBMU Permohonan Kredit | Log in</title>
 	  	<!-- Tell the browser to be responsive to screen width -->
 	  	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 	  	<!-- Bootstrap 3.3.7 -->
@@ -20,11 +20,9 @@
 		<link rel="stylesheet" href="<?= BASE_URL."assets/bower_components/toastr/build/toastr.min.css"; ?>">
 	  	<!-- pace -->
 	  	<link rel="stylesheet" type="text/css" href="<?= BASE_URL."assets/bower_components/PACE/themes/red/pace-theme-flash.css"; ?>">  
-		  <!-- Theme style -->
+		<!-- Theme style -->
 	  	<link rel="stylesheet" href="<?= BASE_URL."assets/dist/css/AdminLTE.min.css"; ?>">
-	  	<!-- iCheck -->
-	  	<link rel="stylesheet" href="<?= BASE_URL."assets/plugins/iCheck/square/blue.css" ?>">
-
+	
 	  	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	  	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	  	<!--[if lt IE 9]>
@@ -42,19 +40,12 @@
 		  	</div>
 		  	<!-- /.login-logo -->
 		  	<div class="login-box-body">
-		    	<?php
-		    		include_once("login/form_login.php");
-		    		include_once("login/form_lupa_password.php");
-		    	?>
+		    	<?php include_once("login/form_login.php"); ?>
 		  	</div>
 		  	<!-- /.login-box-body -->
 		</div>
 		<!-- /.login-box -->
 
-		<script type="text/javascript">
-		    var BASE_URL = "<?php print BASE_URL; ?>";
-		    var urlParams = <?php echo json_encode($_GET, JSON_HEX_TAG);?>;
-		</script>
 		<!-- jQuery 3 -->
 		<script src="<?= BASE_URL."assets/bower_components/jquery/dist/jquery.min.js"; ?>"></script>
 		<!-- Bootstrap 3.3.7 -->
@@ -90,18 +81,36 @@
 				Pace.restart();
 			});
 		</script>
-		<!-- iCheck -->
-		<script src="<?= BASE_URL."assets/plugins/iCheck/icheck.min.js"; ?>"></script>
-		<script>
-		  	$(function () {
-		    	$('input').iCheck({
-		      		checkboxClass: 'icheckbox_square-blue',
-		      		radioClass: 'iradio_square-blue',
-		      		increaseArea: '20%' /* optional */
-		    	});
-	 	 	});
-		</script>
 		<!-- js custom -->
+		<script type="text/javascript">
+		    var BASE_URL = "<?php print BASE_URL; ?>";
+			var urlParams = <?php echo json_encode($_GET, JSON_HEX_TAG);?>;
+			
+			/**
+			 * 
+			 */
+			function setNotif(notif){
+				if(notif.plugin == 'swal'){
+					swal(notif.title, notif.message, notif.type);
+				}
+				else if(notif.plugin == 'toastr'){
+					switch(notif.type){
+						case 'success':
+							toastr.success(notif.message, notif.title);
+							break;
+						case 'warning':
+							toastr.warning(notif.message, notif.title);
+							break;
+						case 'error':
+							toastr.error(notif.message, notif.title);
+							break;
+						default:
+							toastr.info(notif.message, notif.title);
+							break; 
+					}
+				}
+			}
+		</script>
 		<script type="text/javascript" src="<?= BASE_URL."app/views/login/js/initLogin.js" ?>"></script>
 	</body>
 </html>

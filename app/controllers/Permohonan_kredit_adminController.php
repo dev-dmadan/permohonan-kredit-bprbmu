@@ -2,29 +2,39 @@
 	Defined("BASE_PATH") or die("Dilarang Mengakses File Secara Langsung");
 
 	/**
-	 * 
+	 * Class Permohonan_kredit_admin
 	 */
 	class Permohonan_kredit_admin extends Controller{
+		
+		private $success = false;
+		private $message = NULL;
+		private $notif = array();
+		private $error = array();
 
 		/**
-		 * 
+		 * Method __construct
+		 * Load library saat pertama kali di load
 		 */
 		public function __construct(){
 			$this->auth();
 			$this->auth->cekAuth();
 			$this->helper();
 			$this->validation();
+			$this->model('Permohonan_kreditModel');
 		}
 
 		/**
-		 * 
+		 * Method index
+		 * Default Method setelah __construct
+		 * Load page list permohonan kredit admin
 		 */
 		public function index(){
 			$this->list();
 		}
 
 		/**
-		 * 
+		 * Method list
+		 * Load page list permohonan kredit admin
 		 */
 		private function list(){
 			$css = array('assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css');
@@ -47,13 +57,15 @@
         }
         
         /**
-         * 
+         * Method get_list
+		 * Proses get data permohonan kredit untuk dirender di dataTable
+		 * @return output {object} array json
          */
         public function get_list(){
 			if($_SERVER['REQUEST_METHOD'] == "POST"){
 				// config datatable
 				$config_dataTable = array(
-					'tabel' => 'v_permohonan_kredit',
+					'tabel' => 'permohonan_kredit',
 					'kolomOrder' => array(
 						null, 'id', 'tgl', 'no_ktp', 'nama', 'tujuan', 'limit_kredit', 
 						'jangka_waktu', 'jenis', 'status_nasabah', null
@@ -90,6 +102,7 @@
 					$dataRow[] = $row['jangka_waktu'];
 					$dataRow[] = $row['jenis'];
 					$dataRow[] = $row['status_nasabah'];
+					$dataRow[] = $aksi;
 
 					$data[] = $dataRow;
 				}
@@ -103,38 +116,230 @@
 
 				echo json_encode($output);
 			}
-			else $this->redirect();
+			else{
+				die(json_encode(array(
+					'success' => false,
+					'message' => 'Access Denied',
+					'error' => '403'
+				)));
+			}
         }
 
 		/**
-		 * 
+		 * Method detail
+		 * Proses get data dan render data ke detail permohonan kredit
+		 * @param id {string}
 		 */
         public function detail($id){
+			$id = strtoupper($id);
+			$detail = !empty($this->Permohonan_kreditModel->getById($id)) ? 
+				$this->Permohonan_kreditModel->getById($id) : false;
 			
+			if((empty($id) || $id == "") || !$detail) $this->redirect(BASE_URL."permohonan-kredit-admin/");
+
+			$js = array('app/views/permohonan_kredit/js/initView.js');
+			$config = array(
+				'title' => array(
+					'main' => 'Data Permohonan Kredit',
+					'sub' => 'Detail Data Permohonan Kredit',
+				),
+				'css' => null,
+				'js' => $js,
+			);
+
+			$file = $this->validation_file(array(
+				'file_ktp_pemohon' => $detail['file_ktp_pemohon'],
+				'file_ktp_suami_istri' => $detail['file_ktp_suami_istri'],
+				'file_kk' => $detail['file_kk'],
+				'file_slip_gaji' => $detail['file_slip_gaji'],
+				'file_stnk' => $detail['file_stnk'],
+				'file_nota_pajak' => $detail['file_nota_pajak'],
+				'file_bpkp' => $detail['file_bpkp'],
+				'file_faktur' => $detail['file_faktur'],
+				'file_kwintasi_jual_beli' => $detail['file_kwintasi_jual_beli']
+			));
+
+			$data_detail = array(
+				'id' => $detail['id'],
+				'tgl' => $this->helper->cetakTgl($detail['tgl'], 'full'),
+
+				// data pinjaman
+				'status_nasabah' => ($detail['status_nasabah'] == 'Baru') ? 
+					// use style span
+					'<span class="label label-success">'.$detail['status_nasabah'].'</span>' : 
+					'<span class="label label-primary">'.$detail['status_nasabah'].'</span>',
+				'limit_kredit' => $this->helper->cetakRupiah($detail['limit_kredit']),
+				'jangka_waktu' => $detail['jangka_waktu'].' Bulan',
+				'tujuan' => $detail['tujuan'],
+				'jelaskan' => $detail['jelaskan'],
+
+				// data permohonan
+				'nama' => $detail['nama'],
+				'nama_panggilan' => $detail['nama_panggilan'],
+				'tmpt_lahir' => $detail['tmpt_lahir'],
+				'tgl_lahir' => $this->cetakTgl($detail['tgl_lahir'], 'full'),
+				'jk' => $detail['jk'],
+				'no_ktp' => $detail['no_ktp'],
+				'berlaku' => ($detail['berlaku'] == '' || empty($detail['berlaku'])) ? 
+					'-' : $this->helper->cetakTgl($detail['berlaku'], 'full'),
+				'seumur_hidup' => ($detail['seumur_hidup'] == '1') ? 'Ya' : 'Tidak',
+				'status_kawin' => $detail['status_kawin'],
+				'jumlah_anak' => $detail['jumlah_anak'].' Orang',
+				'pendidikan_formal' => $detail['pendidikan_formal'],
+				'nama_ibu' => $detail['nama_ibu'],
+				'alamat' => $detail['alamat'],
+				'status_rumah' => $detail['status_rumah'],
+				'sewa_rumah' => ($detail['sewa_rumah'] == '' || empty($detail['sewa_rumah'])) ? 
+					'-' : $this->helper->cetakTgl($detail['sewa_rumah'], 'full'),
+				'no_telp' => $detail['no_telp'],
+				
+				'nama_suami_istri' => $detail['nama_suami_istri'],
+				'tmpt_lahir_suami_istri' => $detail['tmpt_lahir_suami_istri'],
+				'tgl_lahir_suami_istri' => $this->helper->cetakTgl($detail['tgl_lahir_suami_istri'], 'full'),
+				'pekerjaan_suami_istri' => $detail['pekerjaan_suami_istri'],
+				
+				'pilih_pekerjaan' => $detail['pilih_pekerjaan'],
+				
+				// data pekerjaan
+				'pekerjaan' => $detail['pekerjaan'],
+				'bidang_usaha_pekerjaan' => $detail['bidang_usaha_pekerjaan'],
+				'lama_bekerja' => $detail['lama_bekerja'],
+				'nama_perusahaan' => $detail['nama_perusahaan'],
+				'jabatan' => $detail['jabatan'],
+				'alamat_perusahaan' => $detail['alamat_perusahaan'],
+				'no_telp_perusahaan' => $detail['no_telp_perusahaan'],
+				'penghasilan_bersih_pekerjaan' => $this->helper->cetakRupiah($detail['penghasilan_bersih_pekerjaan']),
+				'rata2_biaya_hidup' => $this->helper->cetakRupiah($detail['rata2_biaya_hidup']),
+				
+				'bentuk_usaha' => $detail['bentuk_usaha'],
+				'prosentase_kepemilikan' => $detail['prosentase_kepemilikan'].' %',
+				'usaha_sejak' => 'Tahun '.$detail['usaha_sejak'],
+				'bidang_usaha' => $detail['bidang_usaha'],
+				'jumlah_karyawan' => $detail['jumlah_karyawan'].' Orang',
+				'alamat_usaha' => $detail['alamat_usaha'],
+				'no_telp_usaha' => $detail['no_telp_usaha'],
+				'penghasilan_bersih' => $this->helper->cetakRupiah($detail['penghasilan_bersih']),
+				
+				// data agunan
+				'jenis' => $detail['jenis'],
+				'tipe_kendaraan' => $detail['tipe_kendaraan'],
+				'warna' => $detail['warna'],
+				'tahun' => $detail['tahun'],
+				'no_bpkb' => $detail['no_bpkb'],
+				'atas_nama' => $detail['atas_nama'],
+				'status_agunan' => $detail['status_agunan'],
+				'imb' => $detail['imb'],
+				'ada' => $detail['ada'],
+				'alamat_agunan' => $detail['alamat_agunan'],
+
+				// data keluarga
+				'nama_keluarga' => $detail['nama_keluarga'],
+				'alamat_keluarga' => $detail['alamat_keluarga'],
+				'no_telp_keluarga' => $detail['no_telp_keluarga'],
+				'hubungan_keluarga' => $detail['hubungan_keluarga'],
+
+				// data upload
+				'file_ktp_pemohon' => $file['file_ktp_pemohon'],
+				'file_ktp_suami_istri' => $file['file_ktp_suami_istri'],
+				'file_kk' => $file['file_kk'],
+				'file_slip_gaji' => $file['file_slip_gaji'],
+				'file_stnk' => $file['file_stnk'],
+				'file_nota_pajak' => $file['file_nota_pajak'],
+				'file_bpkp' => $file['file_bpkp'],
+				'file_faktur' => $file['file_faktur'],
+				'file_kwintasi_jual_beli' => $file['file_kwintasi_jual_beli']
+			);
+			$this->layout('permohonan_kredit/view', $config, $data_detail);
         }
 
         /**
-         * 
+         * Method delete
+		 * Proses hapus data permohonan kredit
+		 * @param id {string}
+		 * @return result {object} array berupa json
          */
         public function delete($id){
 			if($_SERVER['REQUEST_METHOD'] == "POST" && $id != ''){
 				$id = strtoupper($id);
-				if(empty($id) || $id == "") $this->redirect(BASE_URL."permohonan-kredit/");
+				if(empty($id) || $id == ""){
+					die(json_encode(array(
+						'success' => false,
+						'message' => 'Access Denied',
+						'error' => '403'
+					)));
+				}
 
-				if($this->Permohonan_kreditModel->delete($id)) $this->status = true;
+				$delete = $this->Permohonan_kreditModel->delete($id);
 
-				echo json_encode($this->status);
+				if($delete['success']) {
+					$this->success = true;
+					$this->message = "Hapus Data Berhasil";
+					$this->error = $delete['error'];
+					$this->notif = array(
+						'title' => 'Pesan Berhasil',
+						'message' => $this->message,
+						'type' => 'success',
+						'plugin' => 'toastr'
+					);
+				}
+				else{
+					$this->message = "Hapus Data Gagal. Terjadi Kesalahan Teknis, Silahkan Coba Kembali";
+					$this->error = $delete['error'];
+					$this->notif = array(
+						'title' => 'Pesan Gagal',
+						'message' => $this->message,
+						'type' => 'error',
+						'plugin' => 'swal'
+					);
+				}
+
+				$result = array(
+					'success' => $this->success,
+					'message' => $this->message,
+					'notif' => $this->notif,
+					'error' => $this->error
+				);
+
+				echo json_encode($result);
 			}
-			else $this->redirect();
+			else{
+				die(json_encode(array(
+					'success' => false,
+					'message' => 'Access Denied',
+					'error' => '403'
+				)));
+			}
 		}
 
 		/**
-		 * 
+		 * Method export
+		 * Proses Export data detail menjadi excel
 		 */
 		public function export(){
 			if($_SERVER['REQUEST_METHOD'] == "POST"){
-				
+
 			}
+		}
+
+		/**
+		 * Method validation_file
+		 * Proses pengecekan file di server sebelum dikirim ke client
+		 * Pengecekan ketersediaan file, dan handling error jika file tidak ada / rusak
+		 * @param file {array}
+		 * @return result {array}
+		 */
+		private function validation_file($file){
+			$result = array();
+			foreach($file as $key => $value){
+				if(!empty($value)){
+					$filename = ROOT.DS.'assets'.DS.'images'.DS.'permohonan_kredit'.DS.$value;
+					if(!file_exists($filename)) { $result[$key] = BASE_URL.'assets/images/user/default.jpg'; }
+					else { $result[$key] = BASE_URL.'assets/images/permohonan_kredit/'.$value; }
+				}
+				else { $result[$key] = BASE_URL.'assets/images/user/default.jpg'; }
+			}
+
+			return $result;
 		}
 
 	}

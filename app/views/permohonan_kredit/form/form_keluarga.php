@@ -5,8 +5,8 @@
 	<label class="control-label col-sm-2" for="nama_keluarga">Nama (Sesuai KTP): </label>
 	<div class="col-sm-10">
 		<input type="text" id="nama_keluarga" class="form-control field" placeholder="Masukkan Nama Keluarga Terdekat Tidak Serumah">
+		<span class="help-block small pesan pesan-nama_keluarga"></span>
 	</div>
-	<span class="help-block small pesan pesan-nama_keluarga"></span>
 </div>
 
 <!-- Alamat -->
@@ -14,8 +14,8 @@
 	<label class="control-label col-sm-2" for="alamat_keluarga">Alamat Tempat Tinggal: </label>
 	<div class="col-sm-10">
 		<textarea id="alamat_keluarga" class="form-control field" placeholder="Alamat Tempat Tinggal Keluarga Tidak Serumah"></textarea>
+		<span class="help-block small pesan pesan-alamat_keluarga"></span>
 	</div>
-	<span class="help-block small pesan pesan-alamat_keluarga"></span>
 </div>
 
 <!-- No. telp -->
@@ -23,8 +23,8 @@
 	<label class="control-label col-sm-2" for="no_telp_keluarga">No. Telp: </label>
 	<div class="col-sm-10">
 		<input type="text" id="no_telp_keluarga" class="form-control field" placeholder="No. Telepon Keluarga Tidak Serumah">
+		<span class="help-block small pesan pesan-no_telp_keluarga"></span>
 	</div>
-	<span class="help-block small pesan pesan-no_telp_keluarga"></span>
 </div>
 
 <!-- Hubungan -->
@@ -32,6 +32,6 @@
 	<label class="control-label col-sm-2" for="hubungan_keluarga">Hubungan: </label>
 	<div class="col-sm-10">
 		<input type="text" id="hubungan_keluarga" class="form-control field" placeholder="Masukkan Hubungan Keluarga Tidak Serumah">
+		<span class="help-block small pesan pesan-hubungan_keluarga"></span>
 	</div>
-	<span class="help-block small pesan pesan-hubungan_keluarga"></span>
 </div>

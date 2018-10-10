@@ -245,14 +245,22 @@
 						}
 
 					}
-					else $upload_files = NULL;
+					else{
+						$this->message['text'] = "Silahkan cek kembali form isian";
+						$this->notif = array(
+							'title' => 'Pesan Pemberitahuan',
+							'message' => $this->message['text'],
+							'type' => 'warning',
+							'plugin' => 'toastr'
+						);
+					}
 				}
 
 				$result = array(
-					'data_post' => $data,
-					'data_file' => $files,
-					'value_file' => $valueFiles,
-					'upload_files' => $upload_files,
+					// 'data_post' => $data,
+					// 'data_file' => $files,
+					// 'value_file' => $valueFiles,
+					// 'upload_files' => $upload_files,
 					'notif' => $this->notif,
 					'message' => $this->message,
 					'error' => $this->error,
@@ -400,7 +408,7 @@
 			/** Data Pinjaman */
 			
 			// status nasabah - radio btn
-			$this->validation->set_rules($data['status_nasabah'], 'Status Nasabah', 'status_nasabah', 'string | 1 | 1 | required');
+			$this->validation->set_rules($data['status_nasabah'], 'Status Nasabah', 'status_nasabah', 'string | 4 | 4 | required');
 			// limit kredit - text double
 			$this->validation->set_rules($data['limit_kredit'], 'Limit Kredit', 'limit_kredit', 'nilai | 1 | 9999999999 | required');
 			// jangka waktu - text int

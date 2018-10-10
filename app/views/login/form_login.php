@@ -18,7 +18,5 @@
 		</div>
 	</form>
 	<hr>
-	<!-- lupa password -->
-	<a href="javascript:void(0)" id="lupaPassword"><i class="fa fa-lock"></i> Lupa Password ?</a><br>
 </div>
 	

@@ -6,8 +6,8 @@
 	<div class="col-sm-10">
 		<label class="radio-inline"><input type="radio" name="pilih_pekerjaan" value="Karyawan">Karyawan</label>
 		<label class="radio-inline"><input type="radio" name="pilih_pekerjaan" value="Usaha">Usaha / Wiraswasta</label>
+		<span class="help-block small pesan pesan-pilih_pekerjaan"></span>
 	</div>
-	<span class="help-block small pesan pesan-pilih_pekerjaan"></span>
 </div>
 
 <!-- Panel Data Pekerjaan -->
@@ -22,8 +22,8 @@
 			<label class="radio-inline"><input type="radio" name="pekerjaan" value="Professional">Professional</label>
 			<label class="radio-inline"><input type="radio" name="pekerjaan" value="Pensiunan">Pensiunan</label>
 			<label class="radio-inline"><input type="radio" name="pekerjaan" value="TNI/POLRI">TNI/POLRI</label>
+			<span class="help-block small pesan pesan-pekerjaan"></span>
 		</div>
-		<span class="help-block small pesan pesan-pekerjaan"></span>
 	</div>
 
 	<!-- Bidang Usaha - Lama Bekerja -->
@@ -34,8 +34,8 @@
 				<label class="control-label col-sm-3" for="bidang_usaha_pekerjaan">Bidang Usaha: </label>
 				<div class="col-sm-9">
 					<input type="text" id="bidang_usaha_pekerjaan" class="form-control field" placeholder="Masukkan Bidang Usaha Pekerjaan">
+					<span class="help-block small pesan pesan-bidang_usaha_pekerjaan"></span>
 				</div>
-				<span class="help-block small pesan pesan-bidang_usaha_pekerjaan"></span>
 			</div>
 		</div>
 
@@ -47,9 +47,9 @@
 					<div class="input-group">
 						<input type="text" id="lama_bekerja" class="form-control field" placeholder="Masukkan Lama Bekerja">
 						<span class="input-group-addon">Tahun</span>
+						<span class="help-block small pesan pesan-lama_bekerja"></span>
 					</div>
 				</div>
-				<span class="help-block small pesan pesan-lama_bekerja"></span>
 			</div>
 		</div>
 	</div>
@@ -62,8 +62,8 @@
 				<label class="control-label col-sm-4" for="nama_perusahaan">Nama Perusahaan: </label>
 				<div class="col-sm-8">
 					<input type="text" id="nama_perusahaan" class="form-control field" placeholder="Masukkan Nama Perusahaan">
+					<span class="help-block small pesan pesan-nama_perusahaan"></span>
 				</div>
-				<span class="help-block small pesan pesan-nama_perusahaan"></span>
 			</div>
 		</div>
 
@@ -73,8 +73,8 @@
 				<label class="control-label col-sm-4" for="jabatan">Jabatan: </label>
 				<div class="col-sm-8">
 					<input type="text" id="jabatan" class="form-control field" placeholder="Masukkan Jabatan Pekerjaan">
+					<span class="help-block small pesan pesan-jabatan"></span>
 				</div>
-				<span class="help-block small pesan pesan-jabatan"></span>
 			</div>
 		</div>
 	</div>
@@ -84,8 +84,8 @@
 		<label class="control-label col-sm-2" for="alamat_perusahaan">Alamat Perusahaan: </label>
 		<div class="col-sm-10">
 			<textarea id="alamat_perusahaan" class="form-control field" placeholder="Masukkan Alamat Perusahaan Pekerjaan"></textarea>
+			<span class="help-block small pesan pesan-alamat_perusahaan"></span>
 		</div>
-		<span class="help-block small pesan pesan-alamat_perusahaan"></span>
 	</div>
 
 	<!-- No. Telp Perusahaan -->
@@ -93,17 +93,17 @@
 		<label class="control-label col-sm-2" for="no_telp_perusahaan">No. Telp Perusahaan: </label>
 		<div class="col-sm-10">
 			<input type="text" id="no_telp_perusahaan" class="form-control field" placeholder="Masukkan No. Telepon Perusahaan">
+			<span class="help-block small pesan pesan-no_telp_perusahaan"></span>
 		</div>
-		<span class="help-block small pesan pesan-no_telp_perusahaan"></span>
 	</div>
 
 	<!-- Penghasilan Bersih -->
 	<div class="form-group field-penghasilan_bersih_pekerjaan has-feedback">
 		<label class="control-label col-sm-2" for="penghasilan_bersih_pekerjaan">Penghasilan Bersih/Bulan: </label>
 		<div class="col-sm-10">
-			<input type="text" id="penghasilan_bersih_pekerjaan" class="form-control field" placeholder="<asukkan Penghasilan Bersih Pekerjaan">
+			<input type="text" id="penghasilan_bersih_pekerjaan" class="form-control field" placeholder="Masukkan Penghasilan Bersih Pekerjaan">
+			<span class="help-block small pesan pesan-penghasilan_bersih_pekerjaan"></span>
 		</div>
-		<span class="help-block small pesan pesan-penghasilan_bersih_pekerjaan"></span>
 	</div>
 
 	<!-- Rata2 Biaya hidup -->
@@ -111,8 +111,8 @@
 		<label class="control-label col-sm-2" for="rata2_biaya_hidup">Rata-rata Biaya Hidup/Bulan: </label>
 		<div class="col-sm-10">
 			<input type="text" id="rata2_biaya_hidup" class="form-control field" placeholder="Masukkan Rata-rata Biaya Hidup/Bulan">
+			<span class="help-block small pesan pesan-rata2_biaya_hidup"></span>
 		</div>
-		<span class="help-block small pesan pesan-rata2_biaya_hidup"></span>
 	</div>
 </div>
 
@@ -124,8 +124,8 @@
 		<div class="col-sm-10">
 			<label class="radio-inline"><input type="radio" name="bentuk_usaha" value="Perorangan">Perorangan</label>
 			<label class="radio-inline"><input type="radio" name="bentuk_usaha" value="Badan Usaha">Badan Usaha</label>
+			<span class="help-block small pesan pesan-bentuk_usaha"></span>
 		</div>
-		<span class="help-block small pesan pesan-bentuk_usaha"></span>
 	</div>
 
 	<!-- Presentase kepemilikan usaha - Usaha Sejak -->
@@ -137,10 +137,10 @@
 				<div class="col-sm-8">
 					<div class="input-group">
 						<input type="text" id="prosentase_kepemilikan" class="form-control field" placeholder="Masukkan Prosentase Kepemilikan">
-						<span class="input-group-addon">%</span>	
+						<span class="input-group-addon">%</span>
+						<span class="help-block small pesan pesan-prosentase_kepemilikan"></span>	
 					</div>
 				</div>
-				<span class="help-block small pesan pesan-prosentase_kepemilikan"></span>
 			</div>
 		</div>
 
@@ -150,8 +150,8 @@
 				<label class="control-label col-sm-4" for="usaha_sejak">Usaha Sejak: </label>
 				<div class="col-sm-8">
 					<input type="text" id="usaha_sejak" class="form-control field" placeholder="Masukkan Usaha Sejak">
+					<span class="help-block small pesan pesan-usaha_sejak"></span>
 				</div>
-				<span class="help-block small pesan pesan-usaha_sejak"></span>
 			</div>
 		</div>
 	</div>
@@ -165,10 +165,10 @@
 				<div class="col-sm-9">
 					<div class="input-group">
 						<input type="text" id="bidang_usaha" class="form-control field" placeholder="Masukkan Bidang Usaha">
-						<span class="input-group-addon">%</span>	
+						<span class="input-group-addon">%</span>
+						<span class="help-block small pesan pesan-bidang_usaha"></span>	
 					</div>
 				</div>
-				<span class="help-block small pesan pesan-bidang_usaha"></span>
 			</div>
 		</div>
 
@@ -180,9 +180,9 @@
 					<div class="input-group">
 						<input type="text" id="jumlah_karyawan" class="form-control field" placeholder="Masukkan Jumlah Karyawan">
 						<span class="input-group-addon">Orang</span>	
+						<span class="help-block small pesan pesan-jumlah_karyawan"></span>
 					</div>
 				</div>
-				<span class="help-block small pesan pesan-jumlah_karyawan"></span>
 			</div>
 		</div>
 	</div>
@@ -192,8 +192,8 @@
 		<label class="control-label col-sm-2" for="alamat_usaha">Alamat Perusahaan/Usaha: </label>
 		<div class="col-sm-10">
 			<textarea id="alamat_usaha" class="form-control field" placeholder="Masukkan Alamat Usaha"></textarea>
+			<span class="help-block small pesan pesan-alamat_usaha"></span>
 		</div>
-		<span class="help-block small pesan pesan-alamat_usaha"></span>
 	</div>
 
 	<!-- No. Telp Perusahaan usaha -->
@@ -201,8 +201,8 @@
 		<label class="control-label col-sm-2" for="no_telp_usaha">No. Telp Perusahaan/Usaha: </label>
 		<div class="col-sm-10">
 			<input type="text" id="no_telp_usaha" class="form-control field" placeholder="Masukkan No. Telepon Perusahaan/Usaha">
+			<span class="help-block small pesan pesan-no_telp_usaha"></span>
 		</div>
-		<span class="help-block small pesan pesan-no_telp_usaha"></span>
 	</div>
 
 	<!-- Penghasilan Bersih/bulan usaha -->
@@ -210,7 +210,7 @@
 		<label class="control-label col-sm-2" for="penghasilan_bersih">Penghasilan Bersih/Bulan: </label>
 		<div class="col-sm-10">
 			<input type="text" id="penghasilan_bersih" class="form-control field" placeholder="Masukkan Penghasilan Bersih/Bulan">
+			<span class="help-block small pesan pesan-penghasilan_bersih"></span>
 		</div>
-		<span class="help-block small pesan pesan-penghasilan_bersih"></span>
 	</div>
 </div>

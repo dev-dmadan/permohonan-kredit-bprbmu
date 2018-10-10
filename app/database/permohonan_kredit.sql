@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS permohonan_kredit(
     nama_panggilan varchar(255),
     tmpt_lahir varchar(255),
     tgl_lahir date,
-    jk enum('Laki-laki', 'Perempuan'), -- L: Laki-laki, P: Perempuan
+    jk enum('Pria', 'Wanita'),
     no_ktp varchar(25),
     berlaku date,
     seumur_hidup char(1), -- 1: true/ceklis, 0: false/tidak ceklis

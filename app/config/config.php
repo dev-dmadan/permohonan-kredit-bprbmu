@@ -2,9 +2,9 @@
 	Defined("BASE_PATH") or die("Dilarang Mengakses File Secara Langsung");
 
 	// config base url
-	define('BASE_URL', 'http://localhost/rezza/'); // isi path dari web app
+	define('BASE_URL', 'http://localhost/permohonan-kredit-bprbmu/'); // isi path dari web app
 	define('SITE_URL', 'https://bprbmu.co.id/'); // path utama web app
-	define('DEFAULT_CONTROLLER', 'permohonan-kredit-admin'); // default controller yg diakses pertama kali
+	define('DEFAULT_CONTROLLER', 'permohonan-kredit'); // default controller yg diakses pertama kali
 	define('VERSION', '');
 
 	// config database

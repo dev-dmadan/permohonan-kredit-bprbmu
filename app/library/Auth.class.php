@@ -59,13 +59,6 @@
 		}
 
 		/**
-		*
-		*/
-		private function getAkses($user){
-
-		}
-
-		/**
 		* Fungsi untuk mendapatkan token yang sudah di generate
 		* Dapat digunakan juga untuk token crsf yang akan dipasang disetiap module
 		*/
@@ -98,15 +91,5 @@
 		        $rnd = $rnd & $filter; // discard irrelevant bits
 		    } while ($rnd > $range);
 		    return $min + $rnd;
-		}
-
-		/**
-		* Fungsi untuk mengecek token yang dikirim ke client apakah sama dengan token yg di session
-		*/
-		public function cekToken($sess_token, $token, $modul){
-			if(!password_verify($sess_token, $token)){
-				header('Location: '.BASE_URL.$modul.'/');
-				die();
-			}
 		}
 	}

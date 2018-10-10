@@ -6,8 +6,8 @@
 <div class="form-group field-status_nasabah has-feedback">
 	<label class="control-label col-sm-2" for="no_fpk">Status Nasabah: </label>
 	<div class="col-sm-10">
-		<label class="radio-inline"><input type="radio" name="status_nasabah" value="B">Baru</label>
-		<label class="radio-inline"><input type="radio" name="status_nasabah" value="L">Lama</label>
+		<label class="radio-inline"><input type="radio" name="status_nasabah" value="Baru">Baru</label>
+		<label class="radio-inline"><input type="radio" name="status_nasabah" value="Lama">Lama</label>
 		<span class="help-block small pesan pesan-status_nasabah"></span>
 	</div>
 </div>

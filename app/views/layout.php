@@ -34,22 +34,27 @@
 			var urlParams = <?php echo json_encode($_GET, JSON_HEX_TAG);?>;
 			
 			/**
-			*
-			*/
+			 * 
+			 */
 			function setNotif(notif){
-				switch(notif.type){
-					case 'success':
-						toastr.success(notif.message, notif.title);
-						break;
-					case 'warning':
-						toastr.warning(notif.message, notif.title);
-						break;
-					case 'error':
-						toastr.error(notif.message, notif.title);
-						break;
-					default:
-						toastr.info(notif.message, notif.title);
-						break; 
+				if(notif.plugin == 'swal'){
+					swal(notif.title, notif.message, notif.type);
+				}
+				else if(notif.plugin == 'toastr'){
+					switch(notif.type){
+						case 'success':
+							toastr.success(notif.message, notif.title);
+							break;
+						case 'warning':
+							toastr.warning(notif.message, notif.title);
+							break;
+						case 'error':
+							toastr.error(notif.message, notif.title);
+							break;
+						default:
+							toastr.info(notif.message, notif.title);
+							break; 
+					}
 				}
 			}
 		</script>

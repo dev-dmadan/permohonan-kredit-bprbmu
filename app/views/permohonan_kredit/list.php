@@ -10,8 +10,7 @@
 	  	</h1>
 	  	<!-- breadcrumb -->
 	  	<ol class="breadcrumb">
-	    	<li><a href="#"><i class="fa fa-dashboard"></i> Beranda</a></li>
-	    	<li class="active">Data Nasabah</li>
+	    	<li class="active">Data Permohonan Kredit</li>
 	  	</ol>
 	  	<!-- end breadcrumb -->
 	</section>
@@ -38,7 +37,25 @@
 					</div>
 					<!-- box body -->
 					<div class="box-body">
-						
+						<table id="permohonan_kreditTable" class="table table-bordered table-hover">
+							<thead>
+								<tr>
+									<th class="text-right" style="width: 35px">No</th>
+									<th>ID FPK</th>
+									<th>Tanggal</th>
+									<th>No. KTP</th>
+									<th>Nama</th>
+									<th>Tujuan</th>
+									<th class="text-right">Limit Kredit</th>
+									<th>Jangka Waktu</th>
+									<th>Jenis Agunan</th>
+									<th class="text-center">Status Nasabah</th>
+									<th>Aksi</th>
+								</tr>
+							</thead>
+							<tbody>
+							</tbody>
+						</table>
 					</div>
 				</div>
 			</div>

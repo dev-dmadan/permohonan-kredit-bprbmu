@@ -7,8 +7,8 @@
 			<label class="control-label col-sm-4" for="file_ktp_pemohon">KTP Pemohon: </label>
 			<div class="col-sm-8">
 				<input type="file" id="file_ktp_pemohon" class="form-control field">
+				<span class="help-block small pesan pesan-file_ktp_pemohon"></span>
 			</div>
-			<span class="help-block small pesan pesan-file_ktp_pemohon"></span>
 		</div>
 
 		<!-- KTP Suami / Istri -->
@@ -16,8 +16,8 @@
 			<label class="control-label col-sm-4" for="file_ktp_suami_istri">KTP Suami/Istri: </label>
 			<div class="col-sm-8">
 				<input type="file" id="file_ktp_suami_istri" class="form-control field">
+				<span class="help-block small pesan pesan-file_ktp_suami_istri"></span>
 			</div>
-			<span class="help-block small pesan pesan-file_ktp_suami_istri"></span>
 		</div>
 
 		<!-- Kartu Keluarga -->
@@ -25,8 +25,8 @@
 			<label class="control-label col-sm-4" for="file_kk">Kartu Keluarga: </label>
 			<div class="col-sm-8">
 				<input type="file" id="file_kk" class="form-control field">
+				<span class="help-block small pesan pesan-file_kk"></span>
 			</div>
-			<span class="help-block small pesan pesan-file_kk"></span>
 		</div>
 
 		<!-- Slip Gaji -->
@@ -34,8 +34,8 @@
 			<label class="control-label col-sm-4" for="file_slip_gaji">Slip Gaji: </label>
 			<div class="col-sm-8">
 				<input type="file" id="file_slip_gaji" class="form-control field">
+				<span class="help-block small pesan pesan-file_slip_gaji"></span>
 			</div>
-			<span class="help-block small pesan pesan-file_slip_gaji"></span>
 		</div>
 	</div>
 	<div class="col-md-6 col-xs-12">
@@ -44,8 +44,8 @@
 			<label class="control-label col-sm-4" for="file_stnk">STNK: </label>
 			<div class="col-sm-8">
 				<input type="file" id="file_stnk" class="form-control field">
+				<span class="help-block small pesan pesan-file_stnk"></span>
 			</div>
-			<span class="help-block small pesan pesan-file_stnk"></span>
 		</div>
 
 		<!-- Nota Pajak -->
@@ -53,8 +53,8 @@
 			<label class="control-label col-sm-4" for="file_nota_pajak">Nota Pajak: </label>
 			<div class="col-sm-8">
 				<input type="file" id="file_nota_pajak" class="form-control field">
+				<span class="help-block small pesan pesan-file_nota_pajak"></span>
 			</div>
-			<span class="help-block small pesan pesan-file_nota_pajak"></span>
 		</div>
 
 		<!-- BPKB -->
@@ -62,8 +62,8 @@
 			<label class="control-label col-sm-4" for="file_bpkp">BPKB: </label>
 			<div class="col-sm-8">
 				<input type="file" id="file_bpkp" class="form-control field">
+				<span class="help-block small pesan pesan-file_bpkp"></span>
 			</div>
-			<span class="help-block small pesan pesan-file_bpkp"></span>
 		</div>
 
 		<!-- Faktur -->
@@ -71,8 +71,8 @@
 			<label class="control-label col-sm-4" for="file_faktur">Faktur: </label>
 			<div class="col-sm-8">
 				<input type="file" id="file_faktur" class="form-control field">
+				<span class="help-block small pesan pesan-file_faktur"></span>
 			</div>
-			<span class="help-block small pesan pesan-file_faktur"></span>
 		</div>
 
 		<!-- Kwintasi Jual Beli -->
@@ -80,8 +80,8 @@
 			<label class="control-label col-sm-4" for="file_kwintasi_jual_beli">Kwintasi Jual Beli: </label>
 			<div class="col-sm-8">
 				<input type="file" id="file_kwintasi_jual_beli" class="form-control field">
+				<span class="help-block small pesan pesan-file_kwintasi_jual_beli"></span>
 			</div>
-			<span class="help-block small pesan pesan-file_kwintasi_jual_beli"></span>
 		</div>	
 	</div>
 </div>

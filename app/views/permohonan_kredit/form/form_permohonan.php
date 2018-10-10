@@ -54,8 +54,8 @@
 <div class="form-group field-jk has-feedback">
 	<label class="control-label col-sm-2" for="jk">Jenis Kelamin: </label>
 	<div class="col-sm-10">
-		<label class="radio-inline"><input type="radio" name="jk" value="P">Pria</label>
-		<label class="radio-inline"><input type="radio" name="jk" value="W">Wanita</label>
+		<label class="radio-inline"><input type="radio" name="jk" value="Pria">Pria</label>
+		<label class="radio-inline"><input type="radio" name="jk" value="Wanita">Wanita</label>
 		<span class="help-block small pesan pesan-jk"></span>
 	</div>
 </div>
