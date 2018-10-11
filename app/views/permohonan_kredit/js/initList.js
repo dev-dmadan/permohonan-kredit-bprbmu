@@ -31,12 +31,55 @@ $(document).ready(function () {
                 "orderable":false,
             }
         ],
-        createdRow: function(row, data, dataIndex){}
+        createdRow: function(row, data, dataIndex){
+            for(var i = 0; i < 11; i++){
+                if(i == 0 || i == 6) { $('td:eq('+i+')', row).addClass('text-right'); }
+                if(i == 9) { $('td:eq('+i+')', row).addClass('text-center'); }
+            }
+        }
 	});
-	
-    // get view
-    
-
-    // get delete
 
 });
+
+/**
+ * 
+ */
+function getView(id){
+
+}
+
+/**
+ * 
+ */
+function getDelete(id){
+    swal({
+        title: "Pesan Konfirmasi",
+        text: "Apakah Anda Yakin Akan Menghapus Data Ini !!",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "Ya, Hapus!",
+        cancelButtonText: "Batal",
+        closeOnConfirm: false,
+    }, function(){
+        $.ajax({
+            url: BASE_URL+'permohonan-kredit-admin/delete/'+id,
+            type: 'post',
+            dataType: 'json',
+            data: {},
+            beforeSend: function(){},
+            success: function(response){
+                console.log('Response getDelete: ', response);
+                if(response.success){
+                    swal("Pesan Berhasil", "Data Berhasil Dihapus", "success");
+                    $("#proyekTable").DataTable().ajax.reload();
+                }
+                else swal("Pesan Gagal", "Terjadi Kesalahan Teknis, Silahkan Coba Kembali", "error");
+            },
+            error: function (jqXHR, textStatus, errorThrown){ // error handling
+                console.log(jqXHR, textStatus, errorThrown);
+                swal("Pesan Gagal", "Terjadi Kesalahan Teknis, Silahkan Coba Kembali", "error");
+            }
+        })
+    });
+}
