@@ -6,6 +6,16 @@
 	define('ROOT', dirname(__FILE__)); // root file web
 	define('DS', DIRECTORY_SEPARATOR); // pemisah direktori '\'
 
+	/**
+	 * DEFINE TYPE
+	 * Harap diganti menyesuaikan kondisi aplikasi
+	 * 
+	 * DEVELOPMENT_LOCAL - untuk development local
+	 * DELEVOPMET_LIVE - untuk development live/online
+	 * PRODUCTION - untuk go live
+	 */
+	define("TYPE", "DEVELOPMENT_LOCAL");
+
 	// load config
 	require_once "app/config/config.php";
 	require_once "app/config/route.php";
