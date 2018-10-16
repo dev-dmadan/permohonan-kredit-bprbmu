@@ -151,15 +151,42 @@
 			);
 
 			$file = $this->validation_file(array(
-				'file_ktp_pemohon' => $detail['file_ktp_pemohon'],
-				'file_ktp_suami_istri' => $detail['file_ktp_suami_istri'],
-				'file_kk' => $detail['file_kk'],
-				'file_slip_gaji' => $detail['file_slip_gaji'],
-				'file_stnk' => $detail['file_stnk'],
-				'file_nota_pajak' => $detail['file_nota_pajak'],
-				'file_bpkp' => $detail['file_bpkp'],
-				'file_faktur' => $detail['file_faktur'],
-				'file_kwintasi_jual_beli' => $detail['file_kwintasi_jual_beli']
+				'file_ktp_pemohon' => array(
+					'text' => 'File KTP Pemohon',
+					'value' => $detail['file_ktp_pemohon']
+				),
+				'file_ktp_suami_istri' => array(
+					'text' => 'File KTP Suami Istri',
+					'value' => $detail['file_ktp_suami_istri']
+				),
+				'file_kk' => array(
+					'text' => 'File KK',
+					'value' => $detail['file_kk']
+				),
+				'file_slip_gaji' => array(
+					'text' => 'File Slip Gaji',
+					'value' => $detail['file_slip_gaji']
+				),
+				'file_stnk' => array(
+					'text' => 'File STNK',
+					'value' => $detail['file_stnk'],
+				),
+				'file_nota_pajak' => array(
+					'text' => 'File Nota Pajak',
+					'value' => $detail['file_nota_pajak']
+				),
+				'file_bpkb' => array(
+					'text' => 'File BPKB',
+					'value' => $detail['file_bpkb']
+				),
+				'file_faktur' => array(
+					'text' => 'File Faktur',
+					'value' => $detail['file_faktur']
+				),
+				'file_kwintasi_jual_beli' => array(
+					'text' => 'File Kwintasi Jual Beli',
+					'value' => $detail['file_kwintasi_jual_beli']
+				)
 			));
 
 			$data_suami_istri = array();
@@ -251,14 +278,14 @@
 
 				// data agunan
 				'jenis' => $detail['jenis'],
-				'tipe_kendaraan' => $detail['tipe_kendaraan'],
-				'warna' => $detail['warna'],
-				'tahun' => $detail['tahun'],
-				'no_bpkb' => $detail['no_bpkb'],
+				'tipe_kendaraan' => $this->helper->checkEmpty($detail['tipe_kendaraan']) ? '-' : $detail['tipe_kendaraan'],
+				'warna' => $this->helper->checkEmpty($detail['warna']) ? '-' : $detail['warna'],
+				'tahun' => $this->helper->checkEmpty($detail['tahun']) ? '-' : $detail['tahun'],
+				'no_bpkb' => $this->helper->checkEmpty($detail['no_bpkb']) ? '-' : $detail['no_bpkb'],
 				'atas_nama' => $detail['atas_nama'],
-				'status_agunan' => $detail['status_agunan'],
-				'imb' => $detail['imb'],
-				'ada' => $detail['ada'],
+				'status_agunan' => $this->helper->checkEmpty($detail['status_agunan']) ? '-' : $detail['status_agunan'],
+				'imb' => $this->helper->checkEmpty($detail['imb']) ? '-' : $detail['imb'],
+				'ada' => ($detail['imb'] == 'Ada') ? $detail['ada'] : '-',
 				'alamat_agunan' => $detail['alamat_agunan'],
 
 				// data keluarga
@@ -268,15 +295,15 @@
 				'hubungan_keluarga' => $detail['hubungan_keluarga'],
 
 				// data upload
-				'file_ktp_pemohon' => $file['file_ktp_pemohon'],
-				'file_ktp_suami_istri' => $file['file_ktp_suami_istri'],
-				'file_kk' => $file['file_kk'],
-				'file_slip_gaji' => $file['file_slip_gaji'],
-				'file_stnk' => $file['file_stnk'],
-				'file_nota_pajak' => $file['file_nota_pajak'],
-				'file_bpkp' => $file['file_bpkp'],
-				'file_faktur' => $file['file_faktur'],
-				'file_kwintasi_jual_beli' => $file['file_kwintasi_jual_beli']
+				'file_ktp_pemohon' => $file['file_ktp_pemohon']['value'],
+				'file_ktp_suami_istri' => $file['file_ktp_suami_istri']['value'],
+				'file_kk' => $file['file_kk']['value'],
+				'file_slip_gaji' => $file['file_slip_gaji']['value'],
+				'file_stnk' => $file['file_stnk']['value'],
+				'file_nota_pajak' => $file['file_nota_pajak']['value'],
+				'file_bpkp' => $file['file_bpkp']['value'],
+				'file_faktur' => $file['file_faktur']['value'],
+				'file_kwintasi_jual_beli' => $file['file_kwintasi_jual_beli']['value']
 			);
 			$this->layout('permohonan_kredit/view', $config, $data_detail);
         }
@@ -363,12 +390,12 @@
 		private function validation_file($file){
 			$result = array();
 			foreach($file as $key => $value){
-				if(!empty($value)){
+				if(!empty($value['value'])){
 					$filename = ROOT.DS.'assets'.DS.'images'.DS.'permohonan_kredit'.DS.$value;
-					if(!file_exists($filename)) { $result[$key] = BASE_URL.'assets/images/user/default.jpg'; }
-					else { $result[$key] = BASE_URL.'assets/images/permohonan_kredit/'.$value; }
+					if(!file_exists($filename)) { $result[$key] = '-'; }
+					else { $result[$key] = '<a href="'.$value['value'].'" target="_blank">'.$value['text'].'</a>'; }
 				}
-				else { $result[$key] = BASE_URL.'assets/images/user/default.jpg'; }
+				else { $result[$key] = '-'; }
 			}
 
 			return $result;

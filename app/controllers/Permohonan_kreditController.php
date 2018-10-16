@@ -213,7 +213,7 @@
 							'file_slip_gaji' => $this->validation->validInput($valueFiles['file_slip_gaji']['value'], false),
 							'file_stnk' => $this->validation->validInput($valueFiles['file_stnk']['value'], false),
 							'file_nota_pajak' => $this->validation->validInput($valueFiles['file_nota_pajak']['value'], false),
-							'file_bpkp' => $this->validation->validInput($valueFiles['file_bpkp']['value'], false),
+							'file_bpkb' => $this->validation->validInput($valueFiles['file_bpkb']['value'], false),
 							'file_faktur' => $this->validation->validInput($valueFiles['file_faktur']['value'], false),
 							'file_kwintasi_jual_beli' => $this->validation->validInput($valueFiles['file_kwintasi_jual_beli']['value'], false)
 						);
@@ -234,7 +234,6 @@
 								$this->message['error']['field'] = $insert['error']; 
 							}
 						}
-						
 
 						// check insert file and field
 						if($this->checkInsertField && $this->checkUploadFiles){

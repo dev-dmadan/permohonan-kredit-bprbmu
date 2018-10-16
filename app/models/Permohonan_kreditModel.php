@@ -140,7 +140,7 @@
 			$query .= "usaha_sejak, bidang_usaha, jumlah_karyawan, alamat_usaha, no_telp_usaha, penghasilan_bersih, ";
 			$query .= "jenis, tipe_kendaraan, warna, tahun, no_bpkb, atas_nama, status_agunan, imb, ada, alamat_agunan, ";
 			$query .= "nama_keluarga, alamat_keluarga, no_telp_keluarga, hubungan_keluarga, ";
-			$query .= "file_ktp_pemohon, file_ktp_suami_istri, file_kk, file_slip_gaji, file_stnk, file_nota_pajak, file_bpkp, ";
+			$query .= "file_ktp_pemohon, file_ktp_suami_istri, file_kk, file_slip_gaji, file_stnk, file_nota_pajak, file_bpkb, ";
 			$query .= "file_faktur, file_kwintasi_jual_beli)";
 
 			$query .= "VALUES ";
@@ -154,7 +154,7 @@
 			$query .= ":usaha_sejak, :bidang_usaha, :jumlah_karyawan, :alamat_usaha, :no_telp_usaha, :penghasilan_bersih, ";
 			$query .= ":jenis, :tipe_kendaraan, :warna, :tahun, :no_bpkb, :atas_nama, :status_agunan, :imb, :ada, :alamat_agunan, ";
 			$query .= ":nama_keluarga, :alamat_keluarga, :no_telp_keluarga, :hubungan_keluarga, ";
-			$query .= ":file_ktp_pemohon, :file_ktp_suami_istri, :file_kk, :file_slip_gaji, :file_stnk, :file_nota_pajak, :file_bpkp, ";
+			$query .= ":file_ktp_pemohon, :file_ktp_suami_istri, :file_kk, :file_slip_gaji, :file_stnk, :file_nota_pajak, :file_bpkb, ";
 			$query .= ":file_faktur, :file_kwintasi_jual_beli)";
 
 			$statement = $this->koneksi->prepare($query);
@@ -243,7 +243,7 @@
 					':file_slip_gaji' => $data['file_slip_gaji'],
 					':file_stnk' => $data['file_stnk'],
 					':file_nota_pajak' => $data['file_nota_pajak'],
-					':file_bpkp' => $data['file_bpkp'],
+					':file_bpkb' => $data['file_bpkb'],
 					':file_faktur' => $data['file_faktur'],
 					':file_kwintasi_jual_beli' => $data['file_kwintasi_jual_beli']
 				)

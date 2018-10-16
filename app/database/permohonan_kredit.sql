@@ -103,7 +103,7 @@ CREATE TABLE IF NOT EXISTS permohonan_kredit(
     file_slip_gaji text,
     file_stnk text,
     file_nota_pajak text,
-    file_bpkp text,
+    file_bpkb text,
     file_faktur text,
     file_kwintasi_jual_beli text,
 

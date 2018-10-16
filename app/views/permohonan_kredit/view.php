@@ -383,13 +383,174 @@
 						<div class="row">
 							<div class="col-md-12">
 								<table class="table table-hover">
-								
+									<fieldset>
+										<legend style="font-size: 18px;">Data Agunan</legend>
+										<!-- Jenis -->
+										<tr>
+											<td><strong>Jenis Agunan</strong></td>
+											<td><?= $this->data['jenis'] ?></td>
+										</tr>
+										
+										<!-- jika jenis motor / mobil -->
+										<?php
+											if($this->data['jenis'] == 'Motor' || $this->data['jenis'] == 'Mobil'){
+												?>
+													<!-- Tipe Kendaraan -->
+													<tr>
+														<td><strong>Jenis</strong></td>
+														<td><?= $this->data['tipe_kendaraan'] ?></td>
+													</tr>
+
+													<!-- Warna -->
+													<tr>
+														<td><strong>Warna</strong></td>
+														<td><?= $this->data['warna'] ?></td>
+													</tr>
+
+													<!-- Tahun -->
+													<tr>
+														<td><strong>Tahun</strong></td>
+														<td><?= $this->data['tahun'] ?></td>
+													</tr>
+
+													<!-- No BPKB -->
+													<tr>
+														<td><strong>No. BPKB</strong></td>
+														<td><?= $this->data['no_bpkb'] ?></td>
+													</tr>
+												<?php
+											}
+										?>
+										
+										<tr>
+											<td><strong>Atas Nama</strong></td>
+											<td><?= $this->data['atas_nama'] ?></td>
+										</tr>
+
+										<!-- jika jenis rumah -->
+										<?php
+											if($this->data['jenis'] == 'Rumah' || $this->data['jenis'] == 'Tanah'){
+												?>
+													<tr>
+														<td><strong>Status</strong></td>
+														<td><?= $this->data['status_agunan'] ?></td>
+													</tr>
+												<?php
+												if($this->data['jenis'] == 'Rumah'){
+													?>
+														<!-- IMB -->
+														<tr>
+															<td><strong>IMB</strong></td>
+															<td><?= $this->data['ada'] ?></td>
+														</tr>
+													<?php
+												}
+											}
+										?>
+
+										<tr>
+											<td><strong>Alamat Agunan</strong></td>
+											<td><?= $this->data['alamat_agunan'] ?></td>
+										</tr>
+									</fieldset>
 								</table>
 							</div>
 						</div>
 
-
 						<!-- Data Keluara -->
+						<div class="row">
+							<div class="col-md-12">
+								<table class="table table-hover">
+									<fieldset>
+										<legend style="font-size: 18px;">Data Keluarga</legend>
+										<!-- nama keluarga -->
+										<tr>
+											<td><strong>Nama Keluarga</strong></td>
+											<td><?= $this->data['nama_keluarga'] ?></td>
+										</tr>
+
+										<!-- alamat keluarga -->
+										<tr>
+											<td><strong>Alamat Keluarga</strong></td>
+											<td><?= $this->data['alamat_keluarga'] ?></td>
+										</tr>
+
+										<!-- no. telp keluarga -->
+										<tr>
+											<td><strong>No. Telp Keluarga</strong></td>
+											<td><?= $this->data['no_telp_keluarga'] ?></td>
+										</tr>
+
+										<!-- hubungan keluarga -->
+										<tr>
+											<td><strong>Hubungan Keluarga</strong></td>
+											<td><?= $this->data['hubungan_keluarga'] ?></td>
+										</tr>
+									</fieldset>
+								</table>
+							</div>
+						</div>
+
+						<!-- Data Upload -->
+						<div class="row">
+							<div class="col-md-12">
+								<table class=="table table-hover">
+									<!-- File KTP Pemohon -->
+									<tr>
+										<td><strong>File KTP Pemohon</strong></td>
+										<td><?= $this->data['file_ktp_pemohon']; ?></td>
+									</tr>
+
+									<!-- File KTP Suami Istri -->
+									<tr>
+										<td><strong>File KTP Suami Istri</strong></td>
+										<td><?= $this->data['file_ktp_suami_istri'] ?></td>
+									</tr>
+
+									<!-- File KK -->
+									<tr>
+										<td><strong>File KK</strong></td>
+										<td><?= $this->data['file_kk'] ?></td>
+									</tr>
+
+									<!-- File Slip Gaji -->
+									<tr>
+										<td><strong>File Slip Gaji</strong></td>
+										<td><?= $this->data['file_slip_gaji'] ?></td>
+									</tr>
+
+									<!-- File STNK -->
+									<tr>
+										<td><strong>File STNK</strong></td>
+										<td><?= $this->data['file_stnk'] ?></td>
+									</tr>
+
+									<!-- File Nota pajak -->
+									<tr>
+										<td><strong>File Nota Pajak</strong></td>
+										<td><?= $this->data['file_nota_pajak'] ?></td>
+									</tr>
+
+									<!-- File Bpkb -->
+									<tr>
+										<td><strong>File BPKB</strong></td>
+										<td><?= $this->data['file_bpkb'] ?></td>
+									</tr>
+
+									<!-- File faktur -->
+									<tr>
+										<td><strong>File Faktur</strong></td>
+										<td><?= $this->data['file_faktur'] ?></td>
+									</tr>
+
+									<!-- File kwintasi jual beli -->
+									<tr>
+										<td><strong>File Kwintasi Jual Beli</strong></td>
+										<td><?= $this->data['file_kwintasi_jual_beli'] ?></td>
+									</tr>
+								</table>
+							</div>
+						</div>
 					</div>	
 				</div>
 			</div>
