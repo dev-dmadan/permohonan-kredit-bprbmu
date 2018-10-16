@@ -330,7 +330,7 @@ function getDataForm(){
 	data.append('file_slip_gaji', $('#file_slip_gaji')[0].files[0]);
 	data.append('file_stnk', $('#file_stnk')[0].files[0]);
 	data.append('file_nota_pajak', $('#file_nota_pajak')[0].files[0]);
-	data.append('file_bpkp', $('#file_bpkp')[0].files[0]);
+	data.append('file_bpkb', $('#file_bpkb')[0].files[0]);
 	data.append('file_faktur', $('#file_faktur')[0].files[0]);
 	data.append('file_kwintasi_jual_beli', $('#file_kwintasi_jual_beli')[0].files[0]);
 

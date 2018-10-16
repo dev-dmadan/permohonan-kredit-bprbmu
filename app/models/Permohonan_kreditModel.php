@@ -75,6 +75,19 @@
 			return $result;
 		}
 
+		public function get_filesById($id){
+			$query = "SELECT file_ktp_pemohon, file_ktp_suami_istri, file_kk, file_slip_gaji, ";
+			$query .= "file_stnk, file_nota_pajak, file_bpkb, file_faktur, file_kwintasi_jual_beli ";
+			$query .= "FROM permohonan_kredit WHERE id = :id;";
+
+			$statement = $this->koneksi->prepare($query);
+			$statement->bindParam(':id', $id);
+			$statement->execute();
+			$result = $statement->fetch(PDO::FETCH_ASSOC);
+
+			return $result;
+		}
+
 		/**
 		 * 
 		 */

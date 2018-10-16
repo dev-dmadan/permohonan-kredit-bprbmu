@@ -58,11 +58,11 @@
 		</div>
 
 		<!-- BPKB -->
-		<div class="form-group field-file_bpkp has-feedback">
-			<label class="control-label col-sm-4" for="file_bpkp">BPKB: </label>
+		<div class="form-group field-file_bpkb has-feedback">
+			<label class="control-label col-sm-4" for="file_bpkb">BPKB: </label>
 			<div class="col-sm-8">
-				<input type="file" id="file_bpkp" class="form-control field">
-				<span class="help-block small pesan pesan-file_bpkp"></span>
+				<input type="file" id="file_bpkb" class="form-control field">
+				<span class="help-block small pesan pesan-file_bpkb"></span>
 			</div>
 		</div>
 

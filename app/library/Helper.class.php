@@ -95,11 +95,10 @@
 		}
 
 		/**
-		* Fungsi mengganti data yang kosong menjadi '-' (garis strip)
-		*/
-		public function setKosong($data){
-			$temp = ($data == "" || empty($data)) ? "-" : $data;
-			return $temp;
+		 * 
+		 */
+		public function checkEmpty($data){
+			return ($data == "" || empty($data)) ? true : false;
 		}
 
 		/**

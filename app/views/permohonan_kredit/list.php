@@ -28,7 +28,7 @@
 					</div>
 					<!-- box body -->
 					<div class="box-body">
-						<table id="permohonan_kreditTable" class="table table-bordered table-hover">
+						<table id="permohonan_kreditTable" class="table table-bordered table-hover" style="width: 100%">
 							<thead>
 								<tr>
 									<th class="text-right" style="width: 35px">No</th>

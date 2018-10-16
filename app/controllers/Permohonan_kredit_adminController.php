@@ -182,7 +182,7 @@
 				$data_pekerjaan = array(
 					'pekerjaan' => $detail['pekerjaan'],
 					'bidang_usaha_pekerjaan' => $detail['bidang_usaha_pekerjaan'],
-					'lama_bekerja' => $detail['lama_bekerja'],
+					'lama_bekerja' => $detail['lama_bekerja'].' Tahun',
 					'nama_perusahaan' => $detail['nama_perusahaan'],
 					'jabatan' => $detail['jabatan'],
 					'alamat_perusahaan' => $detail['alamat_perusahaan'],
@@ -229,7 +229,7 @@
 					'-' : $this->helper->cetakTgl($detail['berlaku'], 'full'),
 				'seumur_hidup' => ($detail['seumur_hidup'] == '1') ? 'Ya' : 'Tidak',
 				'status_kawin' => $detail['status_kawin'],
-				'jumlah_anak' => $detail['jumlah_anak'].' Orang',
+				'jumlah_anak' => ($detail['seumur_hidup'] == 'Belum Kawin') ? '-' : $detail['jumlah_anak'].' Orang',
 				'pendidikan_formal' => $detail['pendidikan_formal'],
 				'nama_ibu' => $detail['nama_ibu'],
 				'alamat' => $detail['alamat'],
@@ -354,16 +354,6 @@
 		}
 
 		/**
-		 * Method export
-		 * Proses Export data detail menjadi excel
-		 */
-		public function export(){
-			if($_SERVER['REQUEST_METHOD'] == "POST"){
-
-			}
-		}
-
-		/**
 		 * Method validation_file
 		 * Proses pengecekan file di server sebelum dikirim ke client
 		 * Pengecekan ketersediaan file, dan handling error jika file tidak ada / rusak
@@ -382,5 +372,15 @@
 			}
 
 			return $result;
+		}
+
+		/**
+		 * Method export
+		 * Proses Export data detail menjadi excel
+		 */
+		public function export(){
+			if($_SERVER['REQUEST_METHOD'] == "POST"){
+
+			}
 		}
 	}
