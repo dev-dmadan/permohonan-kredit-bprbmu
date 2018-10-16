@@ -45,7 +45,7 @@ $(document).ready(function () {
  * 
  */
 function getView(id){
-
+    window.location.href = BASE_URL+'permohonan-kredit-admin/detail/'+id;
 }
 
 /**
@@ -66,18 +66,18 @@ function getDelete(id){
             url: BASE_URL+'permohonan-kredit-admin/delete/'+id,
             type: 'post',
             dataType: 'json',
-            data: {},
+            data: {}, 
             beforeSend: function(){},
             success: function(response){
                 console.log('Response getDelete: ', response);
                 if(response.success){
                     swal("Pesan Berhasil", "Data Berhasil Dihapus", "success");
-                    $("#proyekTable").DataTable().ajax.reload();
+                    $("#permohonan_kreditTable").DataTable().ajax.reload();
                 }
                 else swal("Pesan Gagal", "Terjadi Kesalahan Teknis, Silahkan Coba Kembali", "error");
             },
             error: function (jqXHR, textStatus, errorThrown){ // error handling
-                console.log(jqXHR, textStatus, errorThrown);
+                console.log('Response error getDelete:', jqXHR, textStatus, errorThrown);
                 swal("Pesan Gagal", "Terjadi Kesalahan Teknis, Silahkan Coba Kembali", "error");
             }
         })

@@ -29,7 +29,7 @@
 	}
 	else if(TYPE === "PRODUCTION"){
 		// config base url
-		define('BASE_URL', 'http://bprbmu.co.id/pages/permohonan-kredit-bprbmu/'); // isi path dari web app
+		define('BASE_URL', 'https://bprbmu.co.id/pages/permohonan-kredit-bprbmu/'); // isi path dari web app
 		define('SITE_URL', 'https://bprbmu.co.id/'); // path utama web app
 		define('DEFAULT_CONTROLLER', 'permohonan-kredit'); // default controller yg diakses pertama kali
 		define('VERSION', '');

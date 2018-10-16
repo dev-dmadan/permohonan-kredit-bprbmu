@@ -75,17 +75,6 @@
 			if($_SERVER['REQUEST_METHOD'] == "POST"){
 				$data = (isset($_POST)) ? $_POST : false;
 				$files = (isset($_FILES)) ? $_FILES : false;
-				$valueFiles = array(
-					'file_ktp_pemohon' => array('value' => NULL, 'required' => true),
-					'file_ktp_suami_istri' => array('value' => NULL, 'required' => true),
-					'file_kk' => array('value' => NULL, 'required' => true),
-					'file_slip_gaji' => array('value' => NULL, 'required' => true),
-					'file_stnk' => array('value' => NULL, 'required' => true),
-					'file_nota_pajak' => array('value' => NULL, 'required' => true),
-					'file_bpkp' => array('value' => NULL, 'required' => true),
-					'file_faktur' => array('value' => NULL, 'required' => true),
-					'file_kwintasi_jual_beli' => array('value' => NULL, 'required' => true)
-				);
 
 				/** Validasi Inputan */
 				if(!$data){
@@ -104,6 +93,31 @@
 					$this->error = $validation['error'];
 					$this->checkPost = $validation['cek'];
 
+					$valueFiles = array(
+						'file_ktp_pemohon' => array('value' => NULL, 'required' => true),
+						'file_ktp_suami_istri' => array('value' => NULL, 
+							'required' => ($data['status_kawin'] == 'Kawin') ? true : false
+						),
+						'file_kk' => array('value' => NULL, 'required' => true),
+						'file_slip_gaji' => array('value' => NULL, 'required' => false),
+						'file_stnk' => array('value' => NULL, 
+							'required' => ($data['jenis'] == 'Mobil' || $data['jenis'] == 'Motor') ? true : false
+						),
+						'file_bpkb' => array('value' => NULL, 
+							'required' => ($data['jenis'] == 'Mobil' || $data['jenis'] == 'Motor') ? true : false
+						),
+						'file_nota_pajak' => array('value' => NULL, 
+							'required' => ($data['jenis'] == 'Mobil' || $data['jenis'] == 'Motor') ? true : false
+						),
+						'file_faktur' => array('value' => NULL, 
+							'required' => ($data['jenis'] == 'Mobil' || $data['jenis'] == 'Motor') ? true : false
+						),
+						'file_kwintasi_jual_beli' => array('value' => NULL, 
+							'required' => (($data['jenis'] == 'Mobil' || $data['jenis'] == 'Motor') && 
+								$data['atas_nama'] == 'Orang Lain') ? true : false
+						)
+					);
+
 					// validasi input file
 					$validation_files = $this->validation_file($files, $valueFiles);
 					$this->checkFiles = $validation_files['check'];
@@ -117,7 +131,7 @@
 					if($this->checkPost && $this->checkFiles){
 						$data_insert = array(
 							// id dan tgl
-							'id' => $this->validation->validInput($this->getLastId(), false),
+							'id' => $this->validation->validInput($data['id'], false),
 							'tgl' => $this->validation->validInput($data['tgl'], false),
 
 							// data pinjaman
@@ -213,12 +227,14 @@
 						}
 
 						// insert data permohonan kredit
-						$insert = $this->Permohonan_kreditModel->insert($data_insert);
-						if(!$insert['success']){
-							$this->checkInsertField = false;
-							// $this->message['text']['field'] = "Terjadi Kesalahan Teknis, Silahkan Coba Kembali";
-							$this->message['error']['field'] = $insert['error'];
+						if($this->checkUploadFiles){
+							$insert = $this->Permohonan_kreditModel->insert($data_insert);
+							if(!$insert['success']){ 
+								$this->checkInsertField = false;
+								$this->message['error']['field'] = $insert['error']; 
+							}
 						}
+						
 
 						// check insert file and field
 						if($this->checkInsertField && $this->checkUploadFiles){
@@ -235,13 +251,24 @@
 						else{
 							// rollback files
 							$this->rollback_files($upload_files['paths']);
-							$this->message['text'] = "Terjadi Kesalahan Teknis, Silahkan Coba Kembali";
-							$this->notif = array(
-								'title' => 'Pesan Error',
-								'message' => $this->message['text'],
-								'type' => 'error',
-								'plugin' => 'swal'
-							);
+							if(!$this->checkInsertField){
+								$this->message['text'] = "Terjadi Kesalahan Teknis, Silahkan Coba Kembali";
+								$this->notif = array(
+									'title' => 'Pesan Error',
+									'message' => $this->message['text'],
+									'type' => 'error',
+									'plugin' => 'swal'
+								);
+							}
+							else{
+								$this->message['text'] = "Silahkan cek kembali form isian";
+								$this->notif = array(
+									'title' => 'Pesan Pemberitahuan',
+									'message' => $this->message['text'],
+									'type' => 'warning',
+									'plugin' => 'toastr'
+								);
+							}
 						}
 
 					}
@@ -421,6 +448,7 @@
 			/** Data permohonan */
 
 			$required_permohonan = array(
+				'ktp' => (strtolower($data['seumur_hidup']) != "1") ? 'required' : 'not_required',
 				'jumlah_anak' => (strtolower($data['status_kawin']) != "belum kawin") ? 'required' : 'not_required',
 				'sewa_rumah' => (strtolower($data['status_rumah']) == 'sewa') ? 'required' : 'not_required',
 			);
@@ -434,17 +462,17 @@
 			// tgl lahir - date
 			$this->validation->set_rules($data['tgl_lahir'], 'Tanggal Lahir', 'tgl_lahir', 'string | 10 | 10 | required');
 			// jk - radio btn
-			$this->validation->set_rules($data['jk'], 'Jenis Kelamin', 'jk', 'string | 1 | 1 | required');
+			$this->validation->set_rules($data['jk'], 'Jenis Kelamin', 'jk', 'string | 4 | 6 | required');
 			// no ktp - text
 			$this->validation->set_rules($data['no_ktp'], 'No. KTP', 'no_ktp', 'string | 1 | 255 | required');
 			// berlaku - date
-			$this->validation->set_rules($data['berlaku'], 'Berlaku', 'berlaku', 'string | 10 | 10 | not_required');
+			$this->validation->set_rules($data['berlaku'], 'Berlaku', 'berlaku', 'string | 10 | 10 | '.$required_permohonan['ktp']);
 			// seumur_hidup - checkbox
 			$this->validation->set_rules($data['seumur_hidup'], 'Seumur Hidup', 'seumur_hidup', 'string | 1 | 1 | not_required');
 			// Status kawin - radio btn
 			$this->validation->set_rules($data['status_kawin'], 'Status Kawin', 'status_kawin', 'string | 1 | 255 | required');
 			// Jumlah Anak - text int
-			$this->validation->set_rules($data['jumlah_anak'], 'Jumlah Anak', 'jumlah_anak', 'string | 1 | 255 | '.$required_permohonan['jumlah_anak']);
+			$this->validation->set_rules($data['jumlah_anak'], 'Jumlah Anak', 'jumlah_anak', 'angka | 0 | 255 | '.$required_permohonan['jumlah_anak']);
 			// Pendidikan formal - radio
 			$this->validation->set_rules($data['pendidikan_formal'], 'Pendidikan Formal', 'pendidikan_formal', 'string | 1 | 10 | required');
 			// nama ibu - text
@@ -520,7 +548,7 @@
 			$required_agunan = array(
 				'kendaraan' => (strtolower($data['jenis']) == 'mobil' || strtolower($data['jenis']) == 'motor') ? 'required' : 'not_required',
 				'rumah' => (strtolower($data['jenis']) == 'rumah' || strtolower($data['jenis']) == 'tanah') ? 'required' : 'not_required',
-				'imb' => ($data['imb'] == '1') ? 'required' : 'not_required',
+				'imb' => ($data['imb'] == 'Ada') ? 'required' : 'not_required',
 			);
 
 			if(strtolower($data['jenis']) == 'mobil' || strtolower($data['jenis']) == 'motor'){

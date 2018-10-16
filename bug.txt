@@ -1,0 +1,12 @@
+## bug
+=> datepicket bulan, dan tahun belum dipasang
+=> jumlah anak, on change blm sesuai
+=> sewa s.d
+=> agunan, on change jenis blm sesuai
+jika sudah terisi dgn jenis lain, 
+maka reset juga radio yg tidak bersangkutan
+=> data suami istri sesuai dengan status perkawinan
+=> validasi jumlah anak
+=> imb jika tanah
+
+=> tgl suami istri, tgl usaha => set null jika tidak diisi

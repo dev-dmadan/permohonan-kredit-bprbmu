@@ -45,6 +45,11 @@
 
 		<!-- hover card image -->
 		<link href="<?= SITE_URL."assets/flip-hover-image/style.css" ?>" rel="stylesheet" type="text/css">
+	
+		<!-- sweet alert 2 -->
+		<link rel="stylesheet" href="<?= BASE_URL."assets/bower_components/sweetalert/sweetalert.css"; ?>">
+		<!-- toastr -->
+		<link rel="stylesheet" href="<?= BASE_URL."assets/bower_components/toastr/build/toastr.min.css"; ?>">
 	</head>
 	<body>
 
@@ -306,6 +311,31 @@
 
 		<!-- jquery--->
 		<script src="<?= SITE_URL."assets/jquery.js" ?>"></script>
+
+		<!-- sweet alert 2 -->
+		<script src="<?= BASE_URL."assets/bower_components/sweetalert/sweetalert.min.js"; ?>"></script>
+		<!-- toastr -->
+		<script src="<?= BASE_URL."assets/bower_components/toastr/build/toastr.min.js"; ?>"></script>
+		<script type="text/javascript">
+			// init toastr
+			toastr.options = {
+				"closeButton": true,
+				"debug": false,
+				"newestOnTop": false,
+				"progressBar": true,
+				"positionClass": "toast-top-right",
+				"preventDuplicates": false,
+				"onclick": null,
+				"showDuration": "300",
+				"hideDuration": "1000",
+				"timeOut": "5000",
+				"extendedTimeOut": "1000",
+				"showEasing": "swing",
+				"hideEasing": "linear",
+				"showMethod": "fadeIn",
+				"hideMethod": "fadeOut"
+			}
+		</script>
 
 		<script>
 			var BASE_URL = "<?php print BASE_URL; ?>";

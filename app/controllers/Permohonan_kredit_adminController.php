@@ -84,24 +84,27 @@
 				$no_urut = $_POST['start'];
 				foreach($dataPermohonan as $row){
 					$no_urut++;
+					
+					// status nasabah
+					$status = ($row['status_nasabah'] == 'Baru') ? '<span class="label label-primary">'.$row['status_nasabah'].'</span>' : 
+						'<span class="label label-success">'.$row['status_nasabah'].'</span>';
 
 					// button aksi
 					$aksiDetail = '<button onclick="getView('."'".strtolower($row["id"])."'".')" type="button" class="btn btn-sm btn-info btn-flat" title="Lihat Detail"><i class="fa fa-eye"></i></button>';
 					$aksiHapus = '<button onclick="getDelete('."'".strtolower($row["id"])."'".')" type="button" class="btn btn-sm btn-danger btn-flat" title="Hapus Data"><i class="fa fa-trash"></i></button>';
-					
 					$aksi = '<div class="btn-group">'.$aksiDetail.$aksiHapus.'</div>';
 					
 					$dataRow = array();
 					$dataRow[] = $no_urut;
 					$dataRow[] = $row['id'];
-					$dataRow[] = $row['tgl'];
+					$dataRow[] = $this->helper->cetakTgl($row['tgl'], 'full');
 					$dataRow[] = $row['no_ktp'];
 					$dataRow[] = $row['nama'];
 					$dataRow[] = $row['tujuan'];
-					$dataRow[] = $row['limit_kredit'];
-					$dataRow[] = $row['jangka_waktu'];
+					$dataRow[] = $this->helper->cetakRupiah($row['limit_kredit']);
+					$dataRow[] = $row['jangka_waktu'].' Bulan';
 					$dataRow[] = $row['jenis'];
-					$dataRow[] = $row['status_nasabah'];
+					$dataRow[] = $status;
 					$dataRow[] = $aksi;
 
 					$data[] = $dataRow;
@@ -143,7 +146,7 @@
 					'main' => 'Data Permohonan Kredit',
 					'sub' => 'Detail Data Permohonan Kredit',
 				),
-				'css' => null,
+				'css' => array(),
 				'js' => $js,
 			);
 
@@ -158,6 +161,48 @@
 				'file_faktur' => $detail['file_faktur'],
 				'file_kwintasi_jual_beli' => $detail['file_kwintasi_jual_beli']
 			));
+
+			$data_suami_istri = array();
+			$data_pekerjaan = array();
+			$data_usaha = array();
+
+			// jika status kawin menikah
+			if($detail['status_kawin'] == 'Kawin' || $detail['status_kawin'] == 'Duda/Janda'){
+				$data_suami_istri = array(
+					'nama_suami_istri' => $detail['nama_suami_istri'],
+					'tmpt_lahir_suami_istri' => $detail['tmpt_lahir_suami_istri'],
+					'tgl_lahir_suami_istri' => $this->helper->cetakTgl($detail['tgl_lahir_suami_istri'], 'full'),
+					'pekerjaan_suami_istri' => $detail['pekerjaan_suami_istri'],
+					'jenis' => ($detail['jk'] == 'Pria') ? 'Istri' : 'Suami'
+				);
+			}
+
+			// jika pilih pekerjaan karyawan
+			if($detail['pilih_pekerjaan'] == 'Karyawan'){
+				$data_pekerjaan = array(
+					'pekerjaan' => $detail['pekerjaan'],
+					'bidang_usaha_pekerjaan' => $detail['bidang_usaha_pekerjaan'],
+					'lama_bekerja' => $detail['lama_bekerja'],
+					'nama_perusahaan' => $detail['nama_perusahaan'],
+					'jabatan' => $detail['jabatan'],
+					'alamat_perusahaan' => $detail['alamat_perusahaan'],
+					'no_telp_perusahaan' => $detail['no_telp_perusahaan'],
+					'penghasilan_bersih_pekerjaan' => $this->helper->cetakRupiah($detail['penghasilan_bersih_pekerjaan']),
+					'rata2_biaya_hidup' => $this->helper->cetakRupiah($detail['rata2_biaya_hidup']),
+				);
+			}
+			else{
+				$data_usaha = array(
+					'bentuk_usaha' => $detail['bentuk_usaha'],
+					'prosentase_kepemilikan' => $detail['prosentase_kepemilikan'].' %',
+					'usaha_sejak' => 'Tahun '.$detail['usaha_sejak'],
+					'bidang_usaha' => $detail['bidang_usaha'],
+					'jumlah_karyawan' => $detail['jumlah_karyawan'].' Orang',
+					'alamat_usaha' => $detail['alamat_usaha'],
+					'no_telp_usaha' => $detail['no_telp_usaha'],
+					'penghasilan_bersih' => $this->helper->cetakRupiah($detail['penghasilan_bersih']),
+				);
+			}
 
 			$data_detail = array(
 				'id' => $detail['id'],
@@ -177,7 +222,7 @@
 				'nama' => $detail['nama'],
 				'nama_panggilan' => $detail['nama_panggilan'],
 				'tmpt_lahir' => $detail['tmpt_lahir'],
-				'tgl_lahir' => $this->cetakTgl($detail['tgl_lahir'], 'full'),
+				'tgl_lahir' => $this->helper->cetakTgl($detail['tgl_lahir'], 'full'),
 				'jk' => $detail['jk'],
 				'no_ktp' => $detail['no_ktp'],
 				'berlaku' => ($detail['berlaku'] == '' || empty($detail['berlaku'])) ? 
@@ -193,33 +238,17 @@
 					'-' : $this->helper->cetakTgl($detail['sewa_rumah'], 'full'),
 				'no_telp' => $detail['no_telp'],
 				
-				'nama_suami_istri' => $detail['nama_suami_istri'],
-				'tmpt_lahir_suami_istri' => $detail['tmpt_lahir_suami_istri'],
-				'tgl_lahir_suami_istri' => $this->helper->cetakTgl($detail['tgl_lahir_suami_istri'], 'full'),
-				'pekerjaan_suami_istri' => $detail['pekerjaan_suami_istri'],
-				
+				// data suami istri
+				'data_suami_istri' => $data_suami_istri,
+
 				'pilih_pekerjaan' => $detail['pilih_pekerjaan'],
 				
 				// data pekerjaan
-				'pekerjaan' => $detail['pekerjaan'],
-				'bidang_usaha_pekerjaan' => $detail['bidang_usaha_pekerjaan'],
-				'lama_bekerja' => $detail['lama_bekerja'],
-				'nama_perusahaan' => $detail['nama_perusahaan'],
-				'jabatan' => $detail['jabatan'],
-				'alamat_perusahaan' => $detail['alamat_perusahaan'],
-				'no_telp_perusahaan' => $detail['no_telp_perusahaan'],
-				'penghasilan_bersih_pekerjaan' => $this->helper->cetakRupiah($detail['penghasilan_bersih_pekerjaan']),
-				'rata2_biaya_hidup' => $this->helper->cetakRupiah($detail['rata2_biaya_hidup']),
+				'data_pekerjaan' => $data_pekerjaan,
 				
-				'bentuk_usaha' => $detail['bentuk_usaha'],
-				'prosentase_kepemilikan' => $detail['prosentase_kepemilikan'].' %',
-				'usaha_sejak' => 'Tahun '.$detail['usaha_sejak'],
-				'bidang_usaha' => $detail['bidang_usaha'],
-				'jumlah_karyawan' => $detail['jumlah_karyawan'].' Orang',
-				'alamat_usaha' => $detail['alamat_usaha'],
-				'no_telp_usaha' => $detail['no_telp_usaha'],
-				'penghasilan_bersih' => $this->helper->cetakRupiah($detail['penghasilan_bersih']),
-				
+				// data usaha
+				'data_usaha' => $data_usaha,
+
 				// data agunan
 				'jenis' => $detail['jenis'],
 				'tipe_kendaraan' => $detail['tipe_kendaraan'],
@@ -269,9 +298,13 @@
 					)));
 				}
 
+				$get_delete_files = $this->Permohonan_kreditModel->get_filesById($id);
 				$delete = $this->Permohonan_kreditModel->delete($id);
 
 				if($delete['success']) {
+					// hapus file di server
+					$this->delete_files($get_delete_files);
+
 					$this->success = true;
 					$this->message = "Hapus Data Berhasil";
 					$this->error = $delete['error'];
@@ -312,6 +345,15 @@
 		}
 
 		/**
+		 * 
+		 */
+		private function delete_files($files){
+			foreach($files as $value){
+				if(file_exists($value)) unlink($value);
+			}
+		}
+
+		/**
 		 * Method export
 		 * Proses Export data detail menjadi excel
 		 */
@@ -341,5 +383,4 @@
 
 			return $result;
 		}
-
 	}

@@ -1,6 +1,5 @@
 $(document).ready(function (){
-	// default set css class pesan none
-	$('.pesan').css('display', 'none');
+	init();
 
 	// on submit form
 	$('#form_permohonan_kredit').on('submit', function(e){
@@ -46,17 +45,105 @@ $(document).ready(function (){
 			$('.panel-data-pekerjaan').slideDown();
 			$('.panel-data-usaha').slideUp();
 			$('.panel-data-usaha').css('display', 'none');
+			
+			$('.panel-data-usaha input').prop('disabled', true);
+			$('.panel-data-usaha textarea').prop('disabled', true);
+
+			$('.panel-data-pekerjaan input').prop('disabled', false);
+			$('.panel-data-pekerjaan textarea').prop('disabled', false);
+			resetPekerjaan('usaha');
 		}
 		else if($(this).val().trim() == 'Usaha'){
 			$('.panel-data-usaha').slideDown();
 			$('.panel-data-pekerjaan').slideUp();
 			$('.panel-data-pekerjaan').css('display', 'none');
+			
+			$('.panel-data-pekerjaan input').prop('disabled', true);
+			$('.panel-data-pekerjaan textarea').prop('disabled', true);
+
+			$('.panel-data-usaha input').prop('disabled', false);
+			$('.panel-data-usaha textarea').prop('disabled', false);
+			resetPekerjaan('pekerjaan');
 		}
 		else{
 			$('.panel-data-usaha').slideUp();
 			$('.panel-data-pekerjaan').slideUp();
 			$('.panel-data-usaha').css('display', 'none');
 			$('.panel-data-pekerjaan').css('display', 'none');
+
+			$('.panel-data-pekerjaan input').prop('disabled', true);
+			$('.panel-data-pekerjaan textarea').prop('disabled', true);
+
+			$('.panel-data-usaha input').prop('disabled', true);
+			$('.panel-data-usaha textarea').prop('disabled', true);
+
+			resetPekerjaan();
+		}
+	});
+
+	// on change jenis agunan
+	$('input[type=radio][name=jenis]').on('change', function(){
+		if($(this).val().trim() == 'Mobil' || $(this).val().trim() == 'Motor'){
+			$('#tipe_kendaraan').prop('disabled', false);
+			$('#warna').prop('disabled', false);
+			$('#tahun').prop('disabled', false);
+			$('#no_bpkb').prop('disabled', false);
+			$("input[type=radio][name=atas_nama]").prop('disabled', false);
+			$("input[type=radio][name=status_agunan]").prop('disabled', true);
+			$("input[type=radio][name=imb]").prop('disabled', true);
+			$('#ada').prop('disabled', true);
+			$('#alamat_agunan').prop('disabled', false);
+		}
+		else if($(this).val().trim() == 'Tanah' || $(this).val().trim() == 'Deposito' 
+			|| $(this).val().trim() == 'Jamsostek'){
+			$('#tipe_kendaraan').prop('disabled', true);
+			$('#warna').prop('disabled', true);
+			$('#tahun').prop('disabled', true);
+			$('#no_bpkb').prop('disabled', true);
+			$("input[type=radio][name=atas_nama]").prop('disabled', false);
+			$("input[type=radio][name=status_agunan]").prop('disabled', true);
+			$("input[type=radio][name=imb]").prop('disabled', true);
+			$('#ada').prop('disabled', true);
+			$('#alamat_agunan').prop('disabled', false);
+		}
+		else if($(this).val().trim() == 'Rumah'){
+			$('#tipe_kendaraan').prop('disabled', true);
+			$('#warna').prop('disabled', true);
+			$('#tahun').prop('disabled', true);
+			$('#no_bpkb').prop('disabled', true);
+			$("input[type=radio][name=atas_nama]").prop('disabled', false);
+			$("input[type=radio][name=status_agunan]").prop('disabled', false);
+			$("input[type=radio][name=imb]").prop('disabled', false);
+			$('#ada').prop('disabled', true);
+			$('#alamat_agunan').prop('disabled', false);
+		}
+		else{
+			$('#tipe_kendaraan').prop('disabled', true);
+			$('#warna').prop('disabled', true);
+			$('#tahun').prop('disabled', true);
+			$('#no_bpkb').prop('disabled', true);
+			$("input[type=radio][name=atas_nama]").prop('disabled', true);
+			$("input[type=radio][name=status_agunan]").prop('disabled', true);
+			$("input[type=radio][name=imb]").prop('disabled', true);
+			$('#ada').prop('disabled', true);
+			$('#alamat_agunan').prop('disabled', true);
+		}
+
+		resetAgunan();
+	});
+
+	// on change imb
+	$('input[type=radio][name=imb]').on('change', function(){
+		if($(this).val().trim() == 'Ada'){
+			$('#ada').prop('disabled', false);
+		}
+		else if($(this).val().trim() == 'Tidak Ada'){
+			$('#ada').val('');
+			$('#ada').prop('disabled', true);
+		}
+		else{
+			$('#ada').val('');
+			$('#ada').prop('disabled', true);
 		}
 	});
 
@@ -90,6 +177,36 @@ $(document).ready(function (){
 
 
 });
+
+/**
+ * 
+ */
+function init(){
+	// default set css class pesan none
+	$('.pesan').css('display', 'none');
+
+	// disable sewa rumah
+	$('#sewa_rumah').prop('disabled', true);
+	// disable jumlah anak
+	$('#jumlah_anak').prop('disabled', true);
+
+	// set panel pekerjaan dan usaha
+	$('.panel-data-pekerjaan input').prop('disabled', true);
+	$('.panel-data-pekerjaan textarea').prop('disabled', true);
+	$('.panel-data-usaha input').prop('disabled', true);
+	$('.panel-data-pekerjaan textarea').prop('disabled', true);
+
+	// disable agunan
+	$('#tipe_kendaraan').prop('disabled', true);
+	$('#warna').prop('disabled', true);
+	$('#tahun').prop('disabled', true);
+	$('#no_bpkb').prop('disabled', true);
+	$("input[type=radio][name=atas_nama]").prop('disabled', true);
+	$("input[type=radio][name=status_agunan]").prop('disabled', true);
+	$("input[type=radio][name=imb]").prop('disabled', true);
+	$('#ada').prop('disabled', true);
+	$('#alamat_agunan').prop('disabled', true);
+}
 
 /**
  * Function getDataForm
@@ -280,4 +397,29 @@ function setError(error){
 	});
 }
 
+/**
+ * 
+ */
+function resetPekerjaan($type = 'full'){
+	if($type == 'usaha'){
 
+	}
+	else if($type == 'pekerjaan'){
+
+	}
+	else if($type == 'full'){
+
+	}
+}
+
+/**
+ * 
+ */
+function resetAgunan(){
+	$('#tipe_kendaraan').val('');
+	$('#warna').val('');
+	$('#tahun').val('');
+	$('#no_bpkb').val('');
+	$('#ada').val('');
+	$('#alamat_agunan').val('');
+}

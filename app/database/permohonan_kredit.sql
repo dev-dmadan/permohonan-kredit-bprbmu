@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS permohonan_kredit(
 
     bentuk_usaha enum('Perorangan', 'Badan Usaha'),
     prosentase_kepemilikan decimal(4,2),
-    usaha_sejak date,
+    usaha_sejak year,
     bidang_usaha varchar(255),
     jumlah_karyawan int,
     alamat_usaha text, 
@@ -86,7 +86,7 @@ CREATE TABLE IF NOT EXISTS permohonan_kredit(
     no_bpkb varchar(255),
     atas_nama enum('Sendiri', 'Keluarga', 'Orang Lain'),
     status_agunan enum('SHM', 'SHGB'),
-    imb char(1), -- 1: true, 0: false
+    imb enum('Ada', 'Tidak Ada'),
     ada varchar(255),
     alamat_agunan text,
 
