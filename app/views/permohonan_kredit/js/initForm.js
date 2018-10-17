@@ -29,33 +29,35 @@ $(document).ready(function (){
 
 	// on change seumur hidup
 	$('#seumur_hidup').on('change', function(){
-		if($(this).is(':checked')){
-			$('#berlaku').val('');
-			$('#berlaku').prop('disabled', true);
-		}
-		else $('#berlaku').prop('disabled', false);
+		if($(this).is(':checked')){	$('#berlaku').prop('disabled', true); }
+		else { $('#berlaku').prop('disabled', false); }
+		$('#berlaku').val('');
 	});
 
 	// on change status kawin
 	$('input[type=radio][name=status_kawin]').on('change', function(){
 		if($(this).val().trim() == 'Kawin' || $(this).val().trim() == 'Duda/Janda'){
 			$('#jumlah_anak').prop('disabled', false);
+			$('#tmpt_lahir_suami_istri').prop('disabled', false);
+			$('#tgl_lahir_suami_istri').prop('disabled', false);
+			$('#nama_suami_istri').prop('disabled', false);
+			$('#pekerjaan_suami_istri').prop('disabled', false);
 		}
 		else {
-			$('#jumlah_anak').val('');
 			$('#jumlah_anak').prop('disabled', true);
+			$('#tmpt_lahir_suami_istri').prop('disabled', true);
+			$('#tgl_lahir_suami_istri').prop('disabled', true);
+			$('#nama_suami_istri').prop('disabled', true);
+			$('#pekerjaan_suami_istri').prop('disabled', true);
 		}
+		$('#jumlah_anak').val('');
 	});
 
 	// on change status rumah
 	$('input[type=radio][name=status_rumah]').on('change', function(){
-		if($(this).val().trim() == 'Sewa'){
-			$('#sewa_rumah').prop('disabled', false);
-		}
-		else{
-			$('#sewa_rumah').val('');
-			$('#sewa_rumah').prop('disabled', true);
-		}
+		if($(this).val().trim() == 'Sewa'){ $('#sewa_rumah').prop('disabled', false); }
+		else{ $('#sewa_rumah').prop('disabled', true); }
+		$('#sewa_rumah').val('');
 	});
 
 	// on change pilih pekerjaan
@@ -435,13 +437,47 @@ function setError(error){
  */
 function resetPekerjaan($type = 'full'){
 	if($type == 'usaha'){
-
+		$("input[type=radio][name=bentuk_usaha]").prop('checked', false);
+		$('#bentuk_usaha').val('');
+		$('#prosentase_kepemilikan').val('');
+		$('#usaha_sejak').val('');
+		$('#bidang_usaha').val('');
+		$('#jumlah_karyawan').val('');
+		$('#alamat_usaha').val('');
+		$('#no_telp_usaha').val('');
+		$('#penghasilan_bersih_pekerjaan').val('');
 	}
 	else if($type == 'pekerjaan'){
-
+		$("input[type=radio][name=pekerjaan]").prop('checked', false);
+		$('#bidang_usaha_pekerjaan').val('');
+		$('#lama_bekerja').val('');
+		$('#nama_perusahaan').val('');
+		$('#jabatan').val('');
+		$('#alamat_perusahaan').val('');
+		$('#no_telp_perusahaan').val('');
+		$('#penghasilan_bersih_pekerjaan').val('');
+		$('#rata2_biaya_hidup').val('');
 	}
 	else if($type == 'full'){
+		$("input[type=radio][name=pekerjaan]").prop('checked', false);
+		$('#bidang_usaha_pekerjaan').val('');
+		$('#lama_bekerja').val('');
+		$('#nama_perusahaan').val('');
+		$('#jabatan').val('');
+		$('#alamat_perusahaan').val('');
+		$('#no_telp_perusahaan').val('');
+		$('#penghasilan_bersih_pekerjaan').val('');
+		$('#rata2_biaya_hidup').val('');
 
+		$("input[type=radio][name=bentuk_usaha]").prop('checked', false);
+		$('#bentuk_usaha').val('');
+		$('#prosentase_kepemilikan').val('');
+		$('#usaha_sejak').val('');
+		$('#bidang_usaha').val('');
+		$('#jumlah_karyawan').val('');
+		$('#alamat_usaha').val('');
+		$('#no_telp_usaha').val('');
+		$('#penghasilan_bersih_pekerjaan').val('');
 	}
 }
 

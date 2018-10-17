@@ -530,7 +530,7 @@
 			// prosentase kepemilikan
 			$this->validation->set_rules($data['prosentase_kepemilikan'], 'Prosentase Kepemilikan', 'prosentase_kepemilikan', 'string | 1 | 255 | '.$required_usaha);
 			// usaha sejak
-			$this->validation->set_rules($data['usaha_sejak'], 'usaha_sejak', 'penghasilan', 'string | 1 | 255 | '.$required_usaha);
+			$this->validation->set_rules($data['usaha_sejak'], 'Usaha Sejak', 'usaha_sejak', 'string | 4 | 4 | '.$required_usaha);
 			// bidang usaha
 			$this->validation->set_rules($data['bidang_usaha'], 'Bidang Usaha', 'bidang_usaha', 'string | 1 | 255 | '.$required_usaha);
 			// jumlah karyawan
