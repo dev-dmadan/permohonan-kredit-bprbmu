@@ -283,10 +283,10 @@
 				}
 
 				$result = array(
-					// 'data_post' => $data,
-					// 'data_file' => $files,
-					// 'value_file' => $valueFiles,
-					// 'upload_files' => $upload_files,
+					'data_post' => $data,
+					'data_file' => $files,
+					'value_file' => $valueFiles,
+					'upload_files' => $upload_files,
 					'notif' => $this->notif,
 					'message' => $this->message,
 					'error' => $this->error,
@@ -375,7 +375,7 @@
 			$error = array();
 
 			foreach($valueFiles as $key => $item){
-				if(($item['value'] != NULL || $item['value'] != "") && $item['required']){
+				if(($item['value'] != NULL || $item['value'] != "")){
 					$path = ROOT.DS.'assets'.DS.'images'.DS.'permohonan_kredit'.DS.$item['value'];
 					if(!move_uploaded_file($files[$key]['tmp_name'], $path)){
 						$check = false;

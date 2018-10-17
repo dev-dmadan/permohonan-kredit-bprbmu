@@ -61,6 +61,9 @@ function getDelete(id){
                 disableButton(false);
                 console.log('Response error getDelete: ', jqXHR, textStatus, errorThrown);
                 swal("Pesan Gagal", "Terjadi Kesalahan Teknis, Silahkan Coba Kembali", "error");
+                setTimeout(function(){ 
+                        window.location.href = BASE_URL+'permohonan-kredit-admin/'; 
+                }, 1500);
             }
         })
     });

@@ -79,6 +79,7 @@ function getDelete(id){
             error: function (jqXHR, textStatus, errorThrown){ // error handling
                 console.log('Response error getDelete:', jqXHR, textStatus, errorThrown);
                 swal("Pesan Gagal", "Terjadi Kesalahan Teknis, Silahkan Coba Kembali", "error");
+                $("#permohonan_kreditTable").DataTable().ajax.reload();
             }
         })
     });

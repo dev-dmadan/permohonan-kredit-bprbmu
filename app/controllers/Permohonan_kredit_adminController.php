@@ -358,7 +358,8 @@
 					'success' => $this->success,
 					'message' => $this->message,
 					'notif' => $this->notif,
-					'error' => $this->error
+					'error' => $this->error,
+					'files' => $get_delete_files,
 				);
 
 				echo json_encode($result);
@@ -377,8 +378,10 @@
 		 */
 		private function delete_files($files){
 			foreach($files as $value){
-				$filepath = ROOT.DS.'assets'.DS.'images'.DS.'permohonan_kredit'.$value;
-				if(file_exists()) unlink($filepath);
+				if(!$this->helper->checkEmpty($value)){
+					$filepath = ROOT.DS.'assets'.DS.'images'.DS.'permohonan_kredit'.DS.$value;
+					if(file_exists($filepath)) unlink($filepath);
+				}
 			}
 		}
 

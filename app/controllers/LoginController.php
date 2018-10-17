@@ -29,7 +29,7 @@
 		 * Akses utama controller login
 		 */
 		public function index() {
-			if($this->auth->isLogin()) $this->redirect(BASE_URL);
+			if($this->auth->isLogin()) $this->redirect(BASE_URL.'permohonan-kredit-admin');
 			else {
 				$_SESSION['sess_lockscreen'] = false;
 				
