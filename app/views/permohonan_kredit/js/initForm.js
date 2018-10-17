@@ -1,5 +1,24 @@
 $(document).ready(function (){
 	init();
+	
+	// datepicker month
+	$('.datepicker').datepicker({
+		autoclose: true,
+		format: "yyyy-mm-dd",
+		todayHighlight: true,
+		orientation:"bottom auto",
+		todayBtn: true,
+	});
+
+	$('.datepicker-year').datepicker({
+		autoclose: true,
+		format: "yyyy",
+		viewMode: "years", 
+    	minViewMode: "years",
+		todayHighlight: true,
+		orientation:"bottom auto",
+		todayBtn: true,
+	});
 
 	// on submit form
 	$('#form_permohonan_kredit').on('submit', function(e){
@@ -94,7 +113,7 @@ $(document).ready(function (){
 			$('#ada').prop('disabled', true);
 			$('#alamat_agunan').prop('disabled', false);
 		}
-		else if($(this).val().trim() == 'Tanah' || $(this).val().trim() == 'Deposito' 
+		else if($(this).val().trim() == 'Deposito' 
 			|| $(this).val().trim() == 'Jamsostek'){
 			$('#tipe_kendaraan').prop('disabled', true);
 			$('#warna').prop('disabled', true);
@@ -102,6 +121,17 @@ $(document).ready(function (){
 			$('#no_bpkb').prop('disabled', true);
 			$("input[type=radio][name=atas_nama]").prop('disabled', false);
 			$("input[type=radio][name=status_agunan]").prop('disabled', true);
+			$("input[type=radio][name=imb]").prop('disabled', true);
+			$('#ada').prop('disabled', true);
+			$('#alamat_agunan').prop('disabled', false);
+		}
+		else if($(this).val().trim() == 'Tanah'){
+			$('#tipe_kendaraan').prop('disabled', true);
+			$('#warna').prop('disabled', true);
+			$('#tahun').prop('disabled', true);
+			$('#no_bpkb').prop('disabled', true);
+			$("input[type=radio][name=atas_nama]").prop('disabled', false);
+			$("input[type=radio][name=status_agunan]").prop('disabled', false);
 			$("input[type=radio][name=imb]").prop('disabled', true);
 			$('#ada').prop('disabled', true);
 			$('#alamat_agunan').prop('disabled', false);
@@ -123,8 +153,11 @@ $(document).ready(function (){
 			$('#tahun').prop('disabled', true);
 			$('#no_bpkb').prop('disabled', true);
 			$("input[type=radio][name=atas_nama]").prop('disabled', true);
+			$("input[type=radio][name=atas_nama]").prop('checked', false);
 			$("input[type=radio][name=status_agunan]").prop('disabled', true);
+			$("input[type=radio][name=status_agunan]").prop('checked', false);
 			$("input[type=radio][name=imb]").prop('disabled', true);
+			$("input[type=radio][name=imb]").prop('checked', false);
 			$('#ada').prop('disabled', true);
 			$('#alamat_agunan').prop('disabled', true);
 		}
@@ -422,4 +455,7 @@ function resetAgunan(){
 	$('#no_bpkb').val('');
 	$('#ada').val('');
 	$('#alamat_agunan').val('');
+	$("input[type=radio][name=atas_nama]").prop('checked', false);
+	$("input[type=radio][name=status_agunan]").prop('checked', false);
+	$("input[type=radio][name=imb]").prop('checked', false);
 }

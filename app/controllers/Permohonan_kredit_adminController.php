@@ -295,15 +295,15 @@
 				'hubungan_keluarga' => $detail['hubungan_keluarga'],
 
 				// data upload
-				'file_ktp_pemohon' => $file['file_ktp_pemohon']['value'],
-				'file_ktp_suami_istri' => $file['file_ktp_suami_istri']['value'],
-				'file_kk' => $file['file_kk']['value'],
-				'file_slip_gaji' => $file['file_slip_gaji']['value'],
-				'file_stnk' => $file['file_stnk']['value'],
-				'file_nota_pajak' => $file['file_nota_pajak']['value'],
-				'file_bpkp' => $file['file_bpkp']['value'],
-				'file_faktur' => $file['file_faktur']['value'],
-				'file_kwintasi_jual_beli' => $file['file_kwintasi_jual_beli']['value']
+				'file_ktp_pemohon' => $file['file_ktp_pemohon'],
+				'file_ktp_suami_istri' => $file['file_ktp_suami_istri'],
+				'file_kk' => $file['file_kk'],
+				'file_slip_gaji' => $file['file_slip_gaji'],
+				'file_stnk' => $file['file_stnk'],
+				'file_nota_pajak' => $file['file_nota_pajak'],
+				'file_bpkp' => $file['file_bpkp'],
+				'file_faktur' => $file['file_faktur'],
+				'file_kwintasi_jual_beli' => $file['file_kwintasi_jual_beli']
 			);
 			$this->layout('permohonan_kredit/view', $config, $data_detail);
         }
@@ -391,9 +391,9 @@
 			$result = array();
 			foreach($file as $key => $value){
 				if(!empty($value['value'])){
-					$filename = ROOT.DS.'assets'.DS.'images'.DS.'permohonan_kredit'.DS.$value;
+					$filename = ROOT.DS.'assets'.DS.'images'.DS.'permohonan_kredit'.DS.$value['value'];
 					if(!file_exists($filename)) { $result[$key] = '-'; }
-					else { $result[$key] = '<a href="'.$value['value'].'" target="_blank">'.$value['text'].'</a>'; }
+					else { $result[$key] = '<a href="'.BASE_URL.'assets/images/permohonan_kredit/'.$value['value'].'" target="_blank">'.$value['text'].'</a>'; }
 				}
 				else { $result[$key] = '-'; }
 			}
@@ -405,9 +405,33 @@
 		 * Method export
 		 * Proses Export data detail menjadi excel
 		 */
-		public function export(){
-			if($_SERVER['REQUEST_METHOD'] == "POST"){
+		public function export($id){
+			if($_SERVER['REQUEST_METHOD'] == "GET" && $id != ''){
+				$id = strtoupper($id);
+				$export = isset($_GET['export']) ? $this->validation->validInput($_GET['export'], false) : false;
+				if(empty($id) || $id == "" || !$export){
+					die(json_encode(array(
+						'success' => false,
+						'message' => 'Access Denied',
+						'error' => '403'
+					)));
+				}
+				
+				$row = $this->Permohonan_kreditModel->export($id, $export);
+				$header = array_keys($row[0]); 
 
+				$this->excel->setProperty('Permohonan Kredit','Permohonan Kredit','Permohonan Kredit');
+				$this->excel->setData($header, $row);
+				$this->excel->getData('Permohonan Kredit', 'Permohonan Kredit', 4, 5 );
+
+				$this->excel->getExcel('Permohonan Kredit');
+			}
+			else{
+				die(json_encode(array(
+					'success' => false,
+					'message' => 'Access Denied',
+					'error' => '403'
+				)));
 			}
 		}
 	}

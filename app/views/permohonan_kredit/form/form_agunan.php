@@ -41,7 +41,7 @@
 		<div class="form-group field-tahun has-feedback">
 			<label class="control-label col-sm-4" for="tahun">Tahun: </label>
 			<div class="col-sm-8">
-				<input type="text" id="tahun" class="form-control field" placeholder="Masukkan Tahun Kendaraan">
+				<input type="text" id="tahun" class="form-control field datepicker-year" placeholder="Masukkan Tahun Kendaraan">
 				<span class="help-block small pesan pesan-tahun"></span>
 			</div>
 		</div>

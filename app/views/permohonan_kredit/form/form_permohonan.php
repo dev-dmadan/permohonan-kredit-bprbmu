@@ -43,7 +43,7 @@
 		<div class="form-group field-tgl_lahir has-feedback">
 			<label class="control-label col-sm-3" for="tgl_lahir">Tanggal Lahir: </label>
 			<div class="col-sm-9">
-				<input type="text" id="tgl_lahir" class="form-control field" placeholder="Masukkan Tanggal Lahir">
+				<input type="text" id="tgl_lahir" class="form-control field datepicker" placeholder="Masukkan Tanggal Lahir">
 				<span class="help-block small pesan pesan-tgl_lahir"></span>
 			</div>
 		</div>
@@ -78,7 +78,7 @@
 		<div class="form-group field-berlaku has-feedback">
 			<label class="control-label col-sm-4" for="berlaku">Berlaku s.d: </label>
 			<div class="col-sm-8">
-				<input type="text" id="berlaku" class="form-control field" placeholder="Berlaku s.d">
+				<input type="text" id="berlaku" class="form-control field datepicker" placeholder="Berlaku s.d">
 				<span class="help-block small pesan pesan-berlaku"></span>
 			</div>
 		</div>
@@ -177,7 +177,7 @@
 		<div class="form-group field-sewa_rumah has-feedback">
 			<label class="control-label col-sm-3" for="sewa_rumah">S.d: </label>
 			<div class="col-sm-9">
-				<input type="text" id="sewa_rumah" class="form-control field" placeholder="Masukkan Sewa Rumah s.d">
+				<input type="text" id="sewa_rumah" class="form-control field datepicker" placeholder="Masukkan Sewa Rumah s.d">
 				<span class="help-block small pesan pesan-sewa_rumah"></span>
 			</div>
 		</div>
@@ -224,7 +224,7 @@
 		<div class="form-group field-tgl_lahir_suami_istri has-feedback">
 			<label class="control-label col-sm-4" for="tgl_lahir_suami_istri">Tanggal Lahir: </label>
 			<div class="col-sm-8">
-				<input type="text" id="tgl_lahir_suami_istri" class="form-control field" placeholder="Masukkan Tanggal Lahir Suami atau Istri">
+				<input type="text" id="tgl_lahir_suami_istri" class="form-control field datepicker" placeholder="Masukkan Tanggal Lahir Suami atau Istri">
 				<span class="help-block small pesan pesan-tgl_lahir_suami_istri"></span>
 			</div>
 		</div>

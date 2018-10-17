@@ -26,6 +26,7 @@
 	require_once "app/library/Datatable.class.php";
 	require_once "app/library/Helper.class.php";
 	require_once "app/library/Validation.class.php";
+	require_once "app/library/Excel.class.php";
 
 	// load abstracts
 	

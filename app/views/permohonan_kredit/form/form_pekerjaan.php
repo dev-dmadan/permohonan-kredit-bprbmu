@@ -149,7 +149,7 @@
 			<div class="form-group field-usaha_sejak has-feedback">
 				<label class="control-label col-sm-4" for="usaha_sejak">Usaha Sejak: </label>
 				<div class="col-sm-8">
-					<input type="text" id="usaha_sejak" class="form-control field" placeholder="Masukkan Usaha Sejak">
+					<input type="text" id="usaha_sejak" class="form-control field datepicker-year" placeholder="Masukkan Usaha Sejak">
 					<span class="help-block small pesan pesan-usaha_sejak"></span>
 				</div>
 			</div>
@@ -163,11 +163,8 @@
 			<div class="form-group field-bidang_usaha has-feedback">
 				<label class="control-label col-sm-3" for="bidang_usaha">Bidang Usaha: </label>
 				<div class="col-sm-9">
-					<div class="input-group">
-						<input type="text" id="bidang_usaha" class="form-control field" placeholder="Masukkan Bidang Usaha">
-						<span class="input-group-addon">%</span>
-						<span class="help-block small pesan pesan-bidang_usaha"></span>	
-					</div>
+					<input type="text" id="bidang_usaha" class="form-control field" placeholder="Masukkan Bidang Usaha">
+					<span class="help-block small pesan pesan-bidang_usaha"></span>
 				</div>
 			</div>
 		</div>

@@ -45,9 +45,13 @@
 
 		<!-- hover card image -->
 		<link href="<?= SITE_URL."assets/flip-hover-image/style.css" ?>" rel="stylesheet" type="text/css">
-	
+
+		<!-- datepicker -->
+		<link rel="stylesheet" href="<?= BASE_URL."assets/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css"; ?>"></link>
+
 		<!-- sweet alert 2 -->
 		<link rel="stylesheet" href="<?= BASE_URL."assets/bower_components/sweetalert/sweetalert.css"; ?>">
+		
 		<!-- toastr -->
 		<link rel="stylesheet" href="<?= BASE_URL."assets/bower_components/toastr/build/toastr.min.css"; ?>">
 	</head>
@@ -316,6 +320,8 @@
 		<script src="<?= BASE_URL."assets/bower_components/sweetalert/sweetalert.min.js"; ?>"></script>
 		<!-- toastr -->
 		<script src="<?= BASE_URL."assets/bower_components/toastr/build/toastr.min.js"; ?>"></script>
+		<!-- datepicker -->
+		<script src="<?= BASE_URL."assets/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"; ?>"></script>
 		<script type="text/javascript">
 			// init toastr
 			toastr.options = {

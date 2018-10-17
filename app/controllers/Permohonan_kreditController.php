@@ -448,7 +448,7 @@
 
 			$required_permohonan = array(
 				'ktp' => (strtolower($data['seumur_hidup']) != "1") ? 'required' : 'not_required',
-				'jumlah_anak' => (strtolower($data['status_kawin']) != "belum kawin" || strtolower($data['status_kawin']) == "") ? 'required' : 'not_required',
+				'jumlah_anak' => (strtolower($data['status_kawin']) == "belum kawin" || strtolower($data['status_kawin']) == "") ? 'not_required' : 'required',
 				'sewa_rumah' => (strtolower($data['status_rumah']) == 'sewa') ? 'required' : 'not_required',
 			);
 
@@ -471,7 +471,7 @@
 			// Status kawin - radio btn
 			$this->validation->set_rules($data['status_kawin'], 'Status Kawin', 'status_kawin', 'string | 1 | 255 | required');
 			// Jumlah Anak - text int
-			$this->validation->set_rules($data['jumlah_anak'], 'Jumlah Anak', 'jumlah_anak', 'angka | 0 | 255 | '.$required_permohonan['jumlah_anak']);
+			$this->validation->set_rules($data['jumlah_anak'], 'Jumlah Anak', 'jumlah_anak', 'nilai | 0 | 255 | '.$required_permohonan['jumlah_anak']);
 			// Pendidikan formal - radio
 			$this->validation->set_rules($data['pendidikan_formal'], 'Pendidikan Formal', 'pendidikan_formal', 'string | 1 | 10 | required');
 			// nama ibu - text

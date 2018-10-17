@@ -64,7 +64,7 @@
 		        ?>
 		        <script type="text/javascript">
 			    	$(document).ready(function(){
-			    		toastr.success('Selamat Datang di Sistem Informasi 69 Design & Build');
+			    		toastr.success('Selamat Datang di Sistem Pendataan Permohonan Kredit BPRBMU');
 			    	});
 			    </script>
 		        <?php

@@ -109,3 +109,66 @@ CREATE TABLE IF NOT EXISTS permohonan_kredit(
 
     CONSTRAINT pk_permohonan_kredit_id PRIMARY KEY(id)
 )ENGINE=MyISAM;
+
+-- Create View Export Pekerjaan
+CREATE OR REPLACE VIEW v_export_pekerjaan AS
+SELECT
+    id AS 'ID FPK', tgl TANGGAL,
+
+    status_nasabah AS 'STATUS NASABAH', limit_kredit AS 'LIMIT KREDIT', 
+    jangka_waktu AS 'JANGKA WAKTU', tujuan TUJUAN, jelaskan JELASKAN,
+    
+    nama NAMA, nama_panggilan AS 'NAMA PANGGILAN', tmpt_lahir AS 'TEMPAT LAHIR', 
+    tgl_lahir AS 'TANGGAL LAHIR', jk AS 'JENIS KELAMIN', no_ktp AS 'NO. KTP', berlaku BERLAKU, 
+    seumur_hidup AS 'SEUMUR HIDUP',
+    status_kawin AS 'STATUS KAWIN', jumlah_anak AS 'JUMLAH ANAK', pendidikan_formal AS 'PENDIDIKAN FORMAL', 
+    nama_ibu AS 'NAMA IBU', alamat ALAMAT, status_rumah AS 'STATUS RUMAH', sewa_rumah AS 'SEWA RUMAH', no_telp AS 'NO. TELP',
+
+    nama_suami_istri AS 'NAMA SUAMI ISTRI', tmpt_lahir_suami_istri AS 'TEMPAT LAHIR SUAMI ISTRI', 
+    tgl_lahir_suami_istri AS 'TANGGAL LAHIR SUAMI ISTRI', pekerjaan_suami_istri AS 'PEKERJAAN SUAMI ISTRI',
+
+    pilih_pekerjaan AS 'JENIS PEKERJAAN',
+
+    pekerjaan PEKERJAAN, bidang_usaha_pekerjaan AS 'BIDANG USAHA PEKERJAAN', lama_bekerja AS 'LAMA BEKERJA', 
+    nama_perusahaan AS 'NAMA PERUSAHAAN', jabatan JABATAN, alamat_perusahaan AS 'ALAMAT PERUSAHAAN', 
+    no_telp_perusahaan AS 'NO. TELP PERUSAHAAN', penghasilan_bersih_pekerjaan AS 'PENGHASILAN BERSIH PEKERJAAN TIAP BULAN', 
+    rata2_biaya_hidup AS 'RATA-RATA BIAYA HIDUP TIAP BULAN',
+
+    jenis JENIS, tipe_kendaraan AS 'TIPE KENDARAAN', warna WARNA, tahun TAHUN, 
+    no_bpkb AS 'NO. BPKB', atas_nama AS 'ATAS NAMA', status_agunan AS 'STATUS AGUNAN', 
+    imb IMB, ada AS 'NO. IMB', alamat_agunan AS 'ALAMAT AGUNAN',
+
+    nama_keluarga AS 'NAMA KELUARGA', alamat_keluarga AS 'ALAMAT KELUARGA', 
+    no_telp_keluarga AS 'NO. TELP KELUARGA', hubungan_keluarga AS 'HUBUNGAN KELUARGA'
+FROM permohonan_kredit;
+
+-- Create View Export Usaha
+CREATE OR REPLACE VIEW v_export_usaha AS
+SELECT
+    id AS 'ID FPK', tgl TANGGAL,
+
+    status_nasabah AS 'STATUS NASABAH', limit_kredit AS 'LIMIT KREDIT', 
+    jangka_waktu AS 'JANGKA WAKTU', tujuan TUJUAN, jelaskan JELASKAN,
+    
+    nama NAMA, nama_panggilan AS 'NAMA PANGGILAN', tmpt_lahir AS 'TEMPAT LAHIR', 
+    tgl_lahir AS 'TANGGAL LAHIR', jk AS 'JENIS KELAMIN', no_ktp AS 'NO. KTP', berlaku BERLAKU, 
+    seumur_hidup AS 'SEUMUR HIDUP',
+    status_kawin AS 'STATUS KAWIN', jumlah_anak AS 'JUMLAH ANAK', pendidikan_formal AS 'PENDIDIKAN FORMAL', 
+    nama_ibu AS 'NAMA IBU', alamat ALAMAT, status_rumah AS 'STATUS RUMAH', sewa_rumah AS 'SEWA RUMAH', no_telp AS 'NO. TELP',
+
+    nama_suami_istri AS 'NAMA SUAMI ISTRI', tmpt_lahir_suami_istri AS 'TEMPAT LAHIR SUAMI ISTRI', 
+    tgl_lahir_suami_istri AS 'TANGGAL LAHIR SUAMI ISTRI', pekerjaan_suami_istri AS 'PEKERJAAN SUAMI ISTRI',
+
+    pilih_pekerjaan AS 'JENIS PEKERJAAN',
+
+    bentuk_usaha AS 'BENTUK USAHA', prosentase_kepemilikan AS 'PROSENTASE KEPEMILIKAN', usaha_sejak AS 'USAHA SEJAK', 
+    bidang_usaha AS 'BIDANG USAHA', jumlah_karyawan AS 'JUMLAH KARYAWAN', alamat_usaha AS 'ALAMAT USAHA', 
+    no_telp_usaha AS 'NO. TELP USAHA', penghasilan_bersih AS 'PENGHASILAN BERSIH TIAP BULAN',
+
+    jenis JENIS, tipe_kendaraan AS 'TIPE KENDARAAN', warna WARNA, tahun TAHUN, 
+    no_bpkb AS 'NO. BPKB', atas_nama AS 'ATAS NAMA', status_agunan AS 'STATUS AGUNAN', 
+    imb IMB, ada AS 'NO. IMB', alamat_agunan AS 'ALAMAT AGUNAN',
+
+    nama_keluarga AS 'NAMA KELUARGA', alamat_keluarga AS 'ALAMAT KELUARGA', 
+    no_telp_keluarga AS 'NO. TELP KELUARGA', hubungan_keluarga AS 'HUBUNGAN KELUARGA'
+FROM permohonan_kredit;

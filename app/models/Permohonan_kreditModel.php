@@ -316,6 +316,23 @@
 		/**
 		 * 
 		 */
+		public function export($id, $pekerjaan){
+			$export = (strtolower($pekerjaan) == 'karyawan') ? 'v_export_karyawan' : 'v_export_usaha';
+			$query = "SELECT * FROM $export WHERE id = :id";
+
+			$statement = $this->koneksi->prepare($query);
+			$statement->execute(
+				array(
+					':id' => $id,
+				)
+			);
+			$result = $statement->fetchAll(PDO::FETCH_ASSOC);
+			return $result;
+		}
+
+		/**
+		 * 
+		 */
 		public function __destruct(){
 			$this->closeConnection($this->koneksi);
 		}
