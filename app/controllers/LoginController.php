@@ -145,6 +145,6 @@
 			session_unset();
 			session_destroy();
 
-			$this->redirect('permohonan-kredit-admin');
+			$this->redirect(BASE_URL.'permohonan-kredit-admin');
 		}
 	}
