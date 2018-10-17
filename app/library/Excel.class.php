@@ -46,9 +46,9 @@
             // set title header
             $this->excel->setActiveSheetIndex(0)->setCellValue('A1', $title_header);
 			$this->excel->getActiveSheet()->getStyle('A1')->getFont()->setBold(TRUE); // Set bold kolom A1
-			$this->excel->getActiveSheet()->getStyle('A1')->getFont()->setSize(15); // Set font size 15 untuk kolom A1
+			$this->excel->getActiveSheet()->getStyle('A1')->getFont()->setSize(12); // Set font size 15 untuk kolom A1
             $this->excel->getActiveSheet()->getStyle('A1')->getAlignment()
-                        ->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER); // Set text center untuk kolom A1
+                        ->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT); // Set text center untuk kolom A1
             
             $column = 'A';
             $no = 1;

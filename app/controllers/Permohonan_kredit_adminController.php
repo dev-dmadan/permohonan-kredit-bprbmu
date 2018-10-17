@@ -421,9 +421,9 @@
 				$row = $this->Permohonan_kreditModel->export($id, $export);
 				$header = array_keys($row[0]); 
 
-				$this->excel->setProperty('Permohonan Kredit','Permohonan Kredit','Permohonan Kredit');
+				// $this->excel->setProperty('Permohonan Kredit','Permohonan Kredit','Permohonan Kredit');
 				$this->excel->setData($header, $row);
-				$this->excel->getData('Permohonan Kredit', 'Permohonan Kredit', 4, 5 );
+				$this->excel->getData('Permohonan Kredit', 'Permohonan Kredit', 2, 3);
 
 				$this->excel->getExcel('Permohonan Kredit');
 			}
