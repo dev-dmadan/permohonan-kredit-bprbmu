@@ -377,7 +377,8 @@
 		 */
 		private function delete_files($files){
 			foreach($files as $value){
-				if(file_exists($value)) unlink($value);
+				$filepath = ROOT.DS.'assets'.DS.'images'.DS.'permohonan_kredit'.$value;
+				if(file_exists()) unlink($filepath);
 			}
 		}
 
