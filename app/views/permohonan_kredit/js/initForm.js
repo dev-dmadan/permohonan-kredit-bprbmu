@@ -219,11 +219,17 @@ $(document).ready(function (){
 function init(){
 	// default set css class pesan none
 	$('.pesan').css('display', 'none');
-
+	
 	// disable sewa rumah
 	$('#sewa_rumah').prop('disabled', true);
 	// disable jumlah anak
 	$('#jumlah_anak').prop('disabled', true);
+
+	$('#jumlah_anak').prop('disabled', true);
+	$('#tmpt_lahir_suami_istri').prop('disabled', true);
+	$('#tgl_lahir_suami_istri').prop('disabled', true);
+	$('#nama_suami_istri').prop('disabled', true);
+	$('#pekerjaan_suami_istri').prop('disabled', true);
 
 	// set panel pekerjaan dan usaha
 	$('.panel-data-pekerjaan input').prop('disabled', true);
