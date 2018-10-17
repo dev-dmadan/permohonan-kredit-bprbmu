@@ -546,7 +546,8 @@
 
 			$required_agunan = array(
 				'kendaraan' => (strtolower($data['jenis']) == 'mobil' || strtolower($data['jenis']) == 'motor') ? 'required' : 'not_required',
-				'rumah' => (strtolower($data['jenis']) == 'rumah' || strtolower($data['jenis']) == 'tanah') ? 'required' : 'not_required',
+				'rumah' => (strtolower($data['jenis']) == 'rumah') ? 'required' : 'not_required',
+				'status' => (strtolower($data['jenis']) == 'rumah' || strtolower($data['jenis']) == 'tanah') ? 'required' : 'not_required',
 				'imb' => ($data['imb'] == 'Ada') ? 'required' : 'not_required',
 			);
 
@@ -570,7 +571,7 @@
 			// atas nama
 			$this->validation->set_rules($data['atas_nama'], 'Atas Nama '.$label, 'atas_nama', 'string | 1 | 255 | required');
 			// status
-			$this->validation->set_rules($data['status_agunan'], 'Status', 'status_agunan', 'string | 1 | 255 | '.$required_agunan['rumah']);
+			$this->validation->set_rules($data['status_agunan'], 'Status', 'status_agunan', 'string | 1 | 255 | '.$required_agunan['status']);
 			// imb
 			$this->validation->set_rules($data['imb'], 'IMB', 'imb', 'string | 1 | 255 | '.$required_agunan['rumah']);
 			// ada
