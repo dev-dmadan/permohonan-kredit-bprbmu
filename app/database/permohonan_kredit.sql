@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS permohonan_kredit(
     seumur_hidup char(1), -- 1: true/ceklis, 0: false/tidak ceklis
     status_kawin enum('Belum Kawin', 'Kawin', 'Duda/Janda'), -- 
     jumlah_anak int,
-    pendidikan_formal enum('SD', 'SLTP', 'SLTA', 'Diploma', 'S1', 'S2', 'S3'), 
+    pendidikan_formal enum('SD', 'SLTP', 'SLTA', 'Diploma', 'S1/S2/S3'), 
     nama_ibu varchar(255),
     alamat text,
     status_rumah enum('Milik Sendiri', 'Keluarga', 'Dinas', 'Sewa'), 

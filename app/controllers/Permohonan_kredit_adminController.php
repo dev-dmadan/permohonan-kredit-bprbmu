@@ -20,6 +20,7 @@
 			$this->auth->cekAuth();
 			$this->helper();
 			$this->validation();
+			$this->excel();
 			$this->model('Permohonan_kreditModel');
 		}
 
@@ -301,7 +302,7 @@
 				'file_slip_gaji' => $file['file_slip_gaji'],
 				'file_stnk' => $file['file_stnk'],
 				'file_nota_pajak' => $file['file_nota_pajak'],
-				'file_bpkp' => $file['file_bpkp'],
+				'file_bpkb' => $file['file_bpkb'],
 				'file_faktur' => $file['file_faktur'],
 				'file_kwintasi_jual_beli' => $file['file_kwintasi_jual_beli']
 			);

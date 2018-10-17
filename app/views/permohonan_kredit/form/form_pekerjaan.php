@@ -47,8 +47,8 @@
 					<div class="input-group">
 						<input type="text" id="lama_bekerja" class="form-control field" placeholder="Masukkan Lama Bekerja">
 						<span class="input-group-addon">Tahun</span>
-						<span class="help-block small pesan pesan-lama_bekerja"></span>
 					</div>
+					<span class="help-block small pesan pesan-lama_bekerja"></span>
 				</div>
 			</div>
 		</div>
@@ -137,9 +137,9 @@
 				<div class="col-sm-8">
 					<div class="input-group">
 						<input type="text" id="prosentase_kepemilikan" class="form-control field" placeholder="Masukkan Prosentase Kepemilikan">
-						<span class="input-group-addon">%</span>
-						<span class="help-block small pesan pesan-prosentase_kepemilikan"></span>	
+						<span class="input-group-addon">%</span>	
 					</div>
+					<span class="help-block small pesan pesan-prosentase_kepemilikan"></span>
 				</div>
 			</div>
 		</div>
@@ -177,8 +177,8 @@
 					<div class="input-group">
 						<input type="text" id="jumlah_karyawan" class="form-control field" placeholder="Masukkan Jumlah Karyawan">
 						<span class="input-group-addon">Orang</span>	
-						<span class="help-block small pesan pesan-jumlah_karyawan"></span>
 					</div>
+					<span class="help-block small pesan pesan-jumlah_karyawan"></span>
 				</div>
 			</div>
 		</div>

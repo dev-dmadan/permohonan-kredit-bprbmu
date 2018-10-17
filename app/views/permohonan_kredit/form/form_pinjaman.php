@@ -30,7 +30,10 @@
 		<div class="form-group field-jangka_waktu has-feedback">
 			<label class="control-label col-sm-4" for="jangka_waktu">Jangka Waktu: </label>
 			<div class="col-sm-8">
-				<input type="text" id="jangka_waktu" class="form-control field" placeholder="Masukkan Jangka Waktu">
+				<div class="input-group">
+					<input type="text" id="jangka_waktu" class="form-control field" placeholder="Masukkan Jangka Waktu">
+					<span class="input-group-addon">Bulan</span>
+				</div>
 				<span class="help-block small pesan pesan-jangka_waktu"></span>
 			</div>
 		</div>

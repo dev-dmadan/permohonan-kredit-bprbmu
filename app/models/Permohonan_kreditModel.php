@@ -317,8 +317,8 @@
 		 * 
 		 */
 		public function export($id, $pekerjaan){
-			$export = (strtolower($pekerjaan) == 'karyawan') ? 'v_export_karyawan' : 'v_export_usaha';
-			$query = "SELECT * FROM $export WHERE id = :id";
+			$export = (strtolower($pekerjaan) == 'karyawan') ? 'v_export_pekerjaan' : 'v_export_usaha';
+			$query = "SELECT * FROM $export WHERE `ID FPK` = :id";
 
 			$statement = $this->koneksi->prepare($query);
 			$statement->execute(

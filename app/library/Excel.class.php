@@ -30,7 +30,7 @@
          */
         public function setProperty($title, $subject, $description) {
             $this->excel->getProperties()
-                ->setCreator('CV. 69 DESIGN BUILD')
+                ->setCreator('BPRBMU')
                 ->setTitle($title)
                 ->setSubject($subject)
                 ->setDescription($description);

@@ -126,7 +126,7 @@
 			$lockscreen = isset($_SESSION['sess_lockscreen']) ? $_SESSION['sess_lockscreen'] : false;
 			$callback = isset($_GET['callback']) ? $_GET['callback'] : false;
 
-			if(!$lockscreen) $this->redirect(BASE_URL);
+			if(!$lockscreen) $this->redirect(BASE_URL.'permohonan-kredit-admin');
 			else{
 				if($_SERVER['REQUEST_METHOD'] == "POST") $this->doLogin($callback); // jika request post login
 				// jika bukan, atau hanya menampilkan halaman login
@@ -145,6 +145,6 @@
 			session_unset();
 			session_destroy();
 
-			$this->redirect();
+			$this->redirect('permohonan-kredit-admin');
 		}
 	}

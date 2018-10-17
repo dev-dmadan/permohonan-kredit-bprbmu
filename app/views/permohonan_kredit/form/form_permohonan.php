@@ -117,9 +117,9 @@
 			<div class="col-sm-9">
 				<div class="input-group">
 					<input type="text" id="jumlah_anak" class="form-control field" placeholder="Masukkan Jumlah Anak" disabled>
-					<span class="input-group-addon">Orang</span>
-					<span class="help-block small pesan pesan-jumlah_anak"></span>	
+					<span class="input-group-addon">Orang</span>	
 				</div>
+				<span class="help-block small pesan pesan-jumlah_anak"></span>
 			</div>
 		</div>
 	</div>

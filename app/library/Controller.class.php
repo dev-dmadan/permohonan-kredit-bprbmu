@@ -46,6 +46,13 @@
 		}
 
 		/**
+		 * 
+		 */
+		final protected function excel($excel = 'excel'){
+			$this->$excel = new Excel();
+		}
+
+		/**
 		* Fungsi untuk templating layout content, css, js, dan data
 		* terdapat 3 parameter
 		* $content => halaman/content yang ingin dipasang di template layout. contoh: list, test/list
